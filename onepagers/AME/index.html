@@ -1,0 +1,963 @@
+<!doctype html><html lang="ru"><head><meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Datum · AMETEK INC/ · AME</title><style>:root{
+  --forest:#17251f;
+  --forest-soft:#21352c;
+  --paper:#fbfbf8;
+  --wash:#eef0ec;
+  --ink:#111512;
+  --muted:#5e6761;
+  --rule:#d7dcd7;
+  --green:#315f4a;
+  --green-soft:#e8eee9;
+  --ochre:#8c6f32;
+  --ochre-soft:#f2ede2;
+}
+
+*{box-sizing:border-box}
+html{background:var(--wash)}
+body{margin:0;color:var(--ink);font:14px/1.38 'IBM Plex Sans','Segoe UI Variable','Segoe UI',sans-serif;font-variant-numeric:tabular-nums}
+a{color:inherit;text-underline-offset:3px}
+button{font:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid #809d8b;outline-offset:3px}
+
+.screen-tools{max-width:1540px;margin:auto;padding:13px 20px;display:flex;justify-content:space-between;color:var(--muted);font-size:12px}
+.screen-tools div{display:flex;gap:8px}
+.screen-tools a,.screen-tools button,.detail-title button,.detail-title .no-print>a{border:1px solid #aab6ae;border-radius:2px;padding:7px 12px;background:#fff;text-decoration:none;color:var(--ink);cursor:pointer}
+
+.sheet{max-width:1540px;margin:0 auto 30px;display:grid;grid-template-columns:330px minmax(0,1fr);background:var(--paper);min-height:1030px;box-shadow:0 10px 40px rgba(27,42,34,.09)}
+.rail{background:var(--forest);color:#f5f7f4;padding:24px 26px 18px;display:flex;flex-direction:column}
+.brand{font-size:17px;font-weight:700;margin-bottom:22px;letter-spacing:-.25px}
+.ticker-line{display:flex;align-items:baseline;gap:15px}
+.ticker-line h1{font-size:30px;line-height:1.05;font-weight:430;letter-spacing:-.8px;margin:0}
+.ticker-line span{font-size:15px;color:#aebbb4}
+.sector{margin:9px 0 4px;font-size:14px}
+.description{font-size:13px;line-height:1.45;margin:0 0 8px;max-width:35ch}
+.quiet{font-size:11px;color:#aeb9b3;margin:0;line-height:1.5}
+.rail-block{border-top:1px solid #596861;margin-top:16px;padding-top:14px}
+.rail-block h2{font-size:14px;font-weight:560;margin:0 0 8px}
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.quote-grid>div+div{border-left:1px solid #596861;padding-left:15px}
+.quote-grid label,.quote-grid small{display:block;color:#aeb9b3;font-size:10px}
+.quote-grid strong{font-size:28px;font-weight:420;letter-spacing:-.5px;display:block;margin:3px 0}
+.rail dl{margin:0}
+.rail dl>div{display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #415149;padding:5px 0;font-size:11px}
+.rail dd{margin:0;text-align:right;font-weight:540}
+.control-card{font-size:11px}
+.person{display:grid;grid-template-columns:1fr 1.25fr;gap:8px;padding:4px 0;border-bottom:1px solid #415149}
+.person strong{font-weight:600}.person span{color:#c0c8c3}
+.control-numbers{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.control-numbers span{color:#c0c8c3;font-size:9px;line-height:1.3}
+.control-numbers b{display:block;color:#fff;font-size:16px;font-weight:520}
+.overlap-note{font-size:9px;color:#c0c8c3;margin:5px 0 8px}
+.drill{font-size:10px;font-weight:550}
+.risks ul{list-style:none;margin:0;padding:0}
+.risks li{position:relative;padding:4px 0 4px 14px;font-size:10px;line-height:1.35}
+.risks li:before{content:'!';position:absolute;left:0;color:#dbc78d;font-weight:700}
+.demo-warning{margin:auto 0 0;padding-top:12px;font-size:9px;color:#9eaaa3;border-top:1px solid #596861}
+
+.main{padding:16px 24px 10px;min-width:0}
+.tabs{height:35px;border-bottom:1px solid var(--rule);display:flex;gap:28px;align-items:center;margin-bottom:11px;font-size:12px}
+.tabs a{text-decoration:none;padding:9px 0}
+.tabs a.active{font-weight:650;border-bottom:2px solid var(--green)}
+
+.decision-band{display:grid;grid-template-columns:1.1fr 2.35fr .95fr;border:1px solid #bbc5be;background:#fff;margin-bottom:8px;min-height:100px}
+.decision-band>div{padding:12px 14px}
+.decision-band>div+div{border-left:1px solid var(--rule)}
+.decision-verdict{background:var(--green-soft)}
+.decision-verdict>span{font-size:10px;font-weight:650;color:var(--green)}
+.decision-verdict h2{font-size:22px;line-height:1.08;margin:6px 0;font-weight:600;letter-spacing:-.45px}
+.decision-verdict p{font-size:11px;margin:0;color:#45514a;max-width:36ch}
+.valuation-strip{display:grid;grid-template-columns:.8fr 1fr 1fr;padding:0!important}
+.valuation-strip article{padding:12px 13px;display:flex;flex-direction:column;justify-content:center}
+.valuation-strip article+article{border-left:1px solid var(--rule)}
+.valuation-strip label{font-size:10px;color:var(--muted)}
+.valuation-strip strong{font-size:29px;line-height:1.1;font-weight:470;letter-spacing:-.6px}
+.valuation-strip em{font-size:11px;font-style:normal;color:var(--ochre);font-weight:650}
+.valuation-strip small{font-size:9px;color:var(--muted);margin-top:4px}
+.valuation-strip .spot strong{color:var(--ink)}
+.model-range{display:flex;flex-direction:column;justify-content:center;gap:5px}
+.model-range b{font-size:12px}.model-range span{font-size:9px;color:var(--muted)}.model-range a{font-size:10px;font-weight:600}
+
+.signal-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin-bottom:9px}
+.signal-strip article{padding:7px 12px;display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:baseline}
+.signal-strip article+article{border-left:1px solid var(--rule)}
+.signal-strip span{font-size:9px;color:var(--muted);grid-row:1/3}
+.signal-strip strong{font-size:13px}.signal-strip small{font-size:9px;color:var(--muted)}
+
+.section-title{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.section-title h2,.two-up h2,.mini-head h2{margin:0;font-size:17px;font-weight:580;letter-spacing:-.2px}
+.section-title small{font-size:9px;color:var(--muted)}
+.model-toggle{display:flex}
+.model-toggle button{background:#fff;border:1px solid #bfc9c2;padding:5px 17px;cursor:pointer}
+.model-toggle button+button{border-left:0}
+.model-toggle button:first-child{border-radius:2px 0 0 2px}.model-toggle button:last-child{border-radius:0 2px 2px 0}
+.model-toggle button[aria-pressed=true]{background:var(--green);color:#fff;border-color:var(--green)}
+.price-chart,.revenue-chart,.spark-history,.capital-chart{display:block;width:100%;height:auto}
+.price-chart{max-height:212px}
+.grid{stroke:var(--rule);stroke-width:1}.zero{stroke:#aab4ad;stroke-width:1;stroke-dasharray:3 3}.axis{font-size:11px;fill:var(--muted)}
+.price-line{fill:none;stroke:var(--ink);stroke-width:2.1}
+.industry-line{fill:none;stroke:var(--green);stroke-width:2.2}
+.measured-line{fill:none;stroke:#737c77;stroke-width:1.9;stroke-dasharray:6 4}
+.end-label{font-size:14px}.end-label.industry{fill:var(--green)}.end-label.measured{fill:#626b66}
+.chart-note{font-size:9px;color:var(--muted);margin:0 0 6px}
+
+.two-up{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule);padding-top:9px;margin-top:5px}
+.two-up>section{min-width:0;padding-right:16px}.two-up>section+section{border-left:1px solid var(--rule);padding-left:16px;padding-right:0}
+.two-up section>header>p,.growth-head p{margin:2px 0 0;display:flex;align-items:baseline;gap:13px}
+.two-up section>header>p strong,.growth-head p strong{font-size:23px;font-weight:450;letter-spacing:-.4px}
+.two-up section>header>p em,.growth-head p em{font-style:normal;color:var(--green);font-size:13px;font-weight:600}
+.two-up header small{color:var(--muted);font-size:9px}
+.revenue-chart{max-height:190px}
+.bar{fill:#8d9690}.bar.current{fill:var(--green)}
+.growth-line,.metric-line{fill:none;stroke:var(--green);stroke-width:2}.growth-dot,.metric-dot{fill:var(--green)}.growth-value,.metric-label{fill:var(--green);font-size:12px}
+.growth-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.growth-head>b{font-size:10px;color:var(--green);padding-bottom:3px}
+.growth-pulse{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule);margin-top:5px}
+.growth-pulse span{padding:4px 4px 1px;text-align:center}.growth-pulse span+span{border-left:1px solid var(--rule)}
+.growth-pulse small,.growth-pulse strong{display:block}.growth-pulse strong{font-size:12px}.growth-pulse span:last-child{background:var(--green-soft)}
+.growth-bridge{display:grid;grid-template-columns:1.1fr repeat(3,1fr) auto;align-items:center;gap:12px;border:1px solid #c8cec9;background:#f4f6f3;padding:7px 10px;margin:5px 0 3px;font-size:9px}
+.growth-bridge strong{font-size:11px}.growth-bridge span{white-space:nowrap}.growth-bridge span b{font-weight:650}.growth-bridge small{color:var(--muted)}
+
+.mini-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.mini-head>strong{font-size:17px;color:var(--green);font-weight:650}.mini-head>a{font-size:10px;color:var(--muted)}
+.series-key{display:flex;gap:13px;margin-top:3px;font-size:8px;color:var(--muted)}
+.series-key span:before{content:'';display:inline-block;width:12px;height:6px;margin-right:4px;vertical-align:middle;background:#28342e}
+.series-key .key-ebitda:before{background:#a6aea9}.series-key .key-ratio:before{height:0;background:none;border-top:2px dashed var(--ochre)}
+.capital-chart,.spark-history{max-height:116px}
+.debt-bar{fill:#28342e}.ebitda-bar{fill:#a6aea9}.ratio-line{fill:none;stroke:var(--ochre);stroke-width:2;stroke-dasharray:4 3}.ratio-dot{fill:var(--ochre)}.ratio-label{fill:var(--ochre);font-size:11px;font-weight:600}
+.leverage-panels section>p{font-size:9px;color:var(--muted);margin:0}.leverage-panels section>p b{color:var(--ink)}
+.mix-panels{padding-top:8px}.mix-bar{height:9px;display:flex;margin:7px 0 5px}.mix-list{display:grid;grid-template-columns:1fr 1fr;gap:2px 12px}.mix-list>div{display:flex;align-items:center;gap:5px;font-size:9px}.mix-list i{width:7px;height:7px;flex:none}.mix-list b{margin-left:auto;font-weight:650}
+.main>footer,.detail-wrap>footer{border-top:1px solid var(--rule);margin-top:8px;padding-top:6px;display:flex;justify-content:space-between;font-size:9px;color:var(--muted)}
+
+.detail-page{background:#edf1ee}.detail-wrap{max-width:1250px;background:#fff;margin:22px auto;padding:25px 38px 30px;min-height:900px;box-shadow:0 8px 35px rgba(30,45,37,.07)}
+.detail-title{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:15px}.detail-title p{font-size:11px;color:var(--muted);margin:0}.detail-title h1{font-size:30px;font-weight:500;margin:4px 0}.detail-title span{font-size:13px}.detail-title .no-print{display:flex;gap:8px}.detail-title .no-print>a{display:inline-block}
+.detail-summary{border-left:3px solid var(--green);background:var(--green-soft);padding:12px 16px;margin:18px 0;max-width:100ch}.detail-wrap h2{font-size:21px;font-weight:520;margin:25px 0 8px}.detail-wrap h3{font-size:16px}.detail-wrap p,.detail-wrap li{max-width:92ch}.table-scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px}th,td{padding:7px 8px;border-bottom:1px solid var(--rule);text-align:right}th{background:#f3f6f3;font-weight:600}th:first-child,td:first-child{text-align:left}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}.assumption-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)}.assumption-grid>div{background:#fff;padding:16px}.assumption-grid span,.assumption-grid small{display:block;color:var(--muted)}.assumption-grid strong{display:block;font-size:29px;font-weight:450}.bridge{max-width:700px}.bridge>div{display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding:7px}.bridge dd{margin:0;font-weight:600}.sensitivity{max-width:750px}.sensitivity .selected{background:var(--green);color:#fff;font-weight:700}.control-map{display:flex;align-items:center;gap:14px;margin:20px 0}.control-map div{border:1px solid #b9c6bd;padding:16px;min-width:160px}.control-map span{color:var(--muted);font-size:11px;max-width:120px;text-align:center}.detail-wrap footer{margin-top:35px}
+
+@media(max-width:1000px){
+  .sheet{grid-template-columns:285px minmax(0,1fr)}.rail{padding:20px}.main{padding:13px}.decision-band{grid-template-columns:1fr 2.3fr}.model-range{grid-column:1/3;border-left:0!important;border-top:1px solid var(--rule);display:grid;grid-template-columns:1fr 1.5fr auto}.growth-bridge{grid-template-columns:1fr 1fr 1fr}.growth-bridge small{grid-column:1/4}.valuation-strip strong{font-size:25px}
+}
+
+@media(max-width:680px){
+  .screen-tools{font-size:10px}.sheet{display:block;margin:0}.rail{min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.brand,.ticker-line,.sector,.description,.rail>.quiet,.quote-grid,.demo-warning{grid-column:1/3}.brand{margin-bottom:13px}.ticker-line h1{font-size:27px}.rail-block{margin-top:11px;padding-top:10px}.risks{display:none}.demo-warning{margin-top:12px}.main{padding:15px}.tabs{gap:18px;overflow-x:auto}.decision-band{display:block}.decision-band>div+div{border-left:0;border-top:1px solid var(--rule)}.valuation-strip{display:grid}.model-range{display:flex}.signal-strip{grid-template-columns:1fr}.signal-strip article+article{border-left:0;border-top:1px solid var(--rule)}.section-title{display:block}.model-toggle{width:max-content;margin-top:8px}.two-up{display:block}.two-up>section,.two-up>section+section{padding:11px 0;border-left:0}.two-up>section+section{border-top:1px solid var(--rule)}.growth-bridge{grid-template-columns:1fr 1fr}.growth-bridge strong,.growth-bridge small{grid-column:1/3}.detail-wrap{margin:0;padding:18px}.detail-title{display:block}.detail-title .no-print{margin-top:15px}.detail-grid,.assumption-grid{grid-template-columns:1fr}.control-map{display:block}.control-map>*{margin:8px 0!important;text-align:left!important}.table-scroll{overflow-x:auto}
+}
+
+.overview-v3 .quote-grid strong span{font-size:.58em;white-space:nowrap}
+.valuation-overview{display:grid;grid-template-columns:1fr 1fr .9fr;border-bottom:1px solid var(--rule);margin:9px 0 8px;padding-bottom:8px}
+.model-stat{padding-right:16px}.model-stat+.model-stat{padding-left:16px;border-left:1px solid var(--rule)}
+.model-stat label{font-size:12px}.model-stat>div{display:flex;align-items:baseline;gap:12px}
+.model-stat strong{font-size:29px;font-weight:460;line-height:1.2}.model-stat em{font-size:12px;font-style:normal;color:var(--muted)}
+.model-stat small{font-size:11px;color:var(--muted)}
+/* the model's own fit class, beside its fair value: the same gap under gold and
+   under n/a are different objects, and the card must let the reader tell them apart */
+.model-stat .fit-line{display:block;margin-top:2px;font-size:10px}
+.fit-short{display:none}
+.fit{font-style:normal;font-weight:600;padding:1px 4px;border-radius:2px;border:1px solid var(--rule);background:var(--wash);color:var(--muted)}
+.fit-gold{color:#1f4a36;background:var(--green-soft);border-color:#9dbfa9}
+.fit-level{color:#2c5c46;background:var(--green-soft);border-color:#c8dccf}
+.fit-weak,.fit-shape{color:#5e6761}
+
+.range-key{display:flex;flex-direction:column;gap:7px;font-size:11px;justify-content:center}
+.range-key small{font-size:10px;color:var(--muted)}
+.legend-industry:before,.legend-measured:before{content:'';display:inline-block;width:28px;height:10px;margin-right:7px;vertical-align:middle}
+.legend-industry:before{background:#dae6dd;border:1px solid #507b63}
+.legend-measured:before{border:1px dashed #727a74;background:repeating-linear-gradient(135deg,transparent 0 3px,#a4aaa5 3px 4px)}
+.overview-v3 .price-chart{max-height:none;height:278px}
+.fan-band{stroke-width:1;fill-opacity:.9}.industry-fan{fill:#dfebe2;stroke:#91af9d}.measured-fan{fill:url(#measured-hatch);stroke:#909792;stroke-dasharray:3 4}
+.hatch-line{stroke:#909991;stroke-width:.65;opacity:.55}.fan-value{font-size:14px;fill:var(--muted)}
+.price-chart .price-line{stroke-width:2.8}.price-chart .end-label{font-size:17px}.price-chart .axis{font-size:14px}
+[data-series][hidden],[data-series-label][hidden]{display:none!important}
+.chart-foot{display:flex;gap:10px;justify-content:space-between;font-size:11px;color:var(--muted);margin:4px 0 9px}
+.inline-note{padding:0;border:0;background:none;color:inherit;font:inherit;text-decoration:underline;cursor:pointer;white-space:nowrap}
+.person-link{padding:0;background:none;border:0;text-align:left;color:inherit;font:inherit;font-weight:600;cursor:pointer;text-decoration:underline;text-decoration-color:#89998f;text-underline-offset:3px}
+.profile-dialog{max-width:520px;width:calc(100% - 36px);padding:26px;border:1px solid #91a396;color:var(--ink);background:#fff;line-height:1.6}
+.profile-dialog::backdrop{background:rgba(15,26,20,.5)}.profile-dialog h2{font-size:23px;font-weight:550;margin:5px 20px 15px 0}.profile-dialog small{color:var(--muted)}
+.dialog-close{position:absolute;right:12px;top:7px;border:0;background:none;font-size:28px;cursor:pointer}
+.memory-card h2{font-size:14px}.memory-fact{margin:10px 0}.memory-fact h3{font-size:11px;margin:0 0 3px;font-weight:600;color:#c5d7ca}.memory-fact p{margin:0;font-size:11px;line-height:1.45}.notable-owner span{font-size:10px;color:#b9c3bc}
+.growth-acceleration{font-size:11px;color:var(--green);margin:1px 0 4px;text-align:right}
+.overview-v3 .growth-bridge{grid-template-columns:1fr 1.2fr 1.2fr 1fr;font-size:11px;padding:8px 10px}
+.overview-v3 .revenue-chart{max-height:none;height:187px}
+.overview-v3 .revenue-chart .axis,.overview-v3 .capital-chart .axis{font-size:14px}
+.overview-v3 .growth-value,.overview-v3 .metric-label{font-size:15px}
+.margin-chart{width:100%;height:135px;display:block}
+.margin-company{fill:none;stroke:var(--green);stroke-width:2.7}.margin-peer{fill:none;stroke:#777e78;stroke-width:1.8;stroke-dasharray:6 4}
+.margin-chart .axis{font-size:14px}.margin-chart .peer-label{fill:#565e58;font-size:13px}.peer-dot{fill:#fff;stroke:#626a64;stroke-width:1.4}
+.series-key .key-peer:before{height:0;border-top:2px dashed #737b75;background:none}
+.overview-v3 .capital-chart{max-height:none;height:135px}.overview-v3 .series-key{font-size:10px}
+.overview-v3 .metric-note{font-size:11px;margin:3px 0;color:var(--muted)}.benchmark-note{font-size:10px;color:var(--muted)}
+.print-only{display:none}.overview-v3 .mix-list>div{font-size:11px}.overview-v3 .main>footer{font-size:10px}
+@media screen and (max-width:1000px){.valuation-overview{grid-template-columns:1fr 1fr}.range-key{grid-column:1/3;flex-direction:row;justify-content:flex-start;margin-top:8px}.overview-v3 .growth-bridge{grid-template-columns:1fr 1fr}.overview-v3 .price-chart{height:auto}.overview-v3 .revenue-chart{height:auto}}
+@media screen and (max-width:680px){
+ .overview-v3{display:flex;flex-direction:column}.overview-v3 .rail{display:contents}.overview-v3 .main{display:contents}
+ .overview-v3 .brand,.overview-v3 .ticker-line,.overview-v3 .sector,.overview-v3 .description,.overview-v3 .rail>.quiet,.overview-v3 .quote-grid{order:0;background:var(--forest);color:#fff;margin:0;padding:8px 18px;max-width:none}
+ .overview-v3 .brand{padding-top:16px}.overview-v3 .quote-grid{padding-bottom:16px;border-top:0}
+ .overview-v3 .tabs{order:1;padding:0 16px}.overview-v3 .price-section{order:2;padding:0 16px}.overview-v3 .revenue-panels{order:3;margin:0 16px}.overview-v3 .growth-bridge{order:4;margin:0 16px}.overview-v3 .leverage-panels{order:5;margin:0 16px}.overview-v3 .mix-panels{order:6;margin:0 16px}
+ .overview-v3 .rail-financials,.overview-v3 .control-card,.overview-v3 .memory-card{order:7;background:var(--forest);color:#fff;margin:0;padding:15px 18px}.overview-v3 .demo-warning{order:8;background:var(--forest);color:#c1d0c5;margin:0;padding:12px 18px}.overview-v3 .main>footer{order:9;padding:12px 16px}
+ .overview-v3 .price-chart{height:170px;width:100%}.valuation-overview{gap:8px}.model-stat{padding-right:0}.model-stat+.model-stat{padding-left:10px}.model-stat>div{gap:7px;flex-wrap:wrap}.model-stat strong{font-size:26px}.model-stat small{font-size:10px}.range-key{flex-wrap:wrap}.chart-foot{display:block;font-size:10px}.inline-note{margin-top:6px}.overview-v3 .revenue-chart{height:auto}.overview-v3 .capital-chart,.margin-chart{height:auto}
+}
+
+.site-plain{border-bottom:1px dotted currentColor;cursor:help}
+.tabs a[aria-disabled="true"]{color:var(--muted);cursor:not-allowed;text-decoration:none}
+.tabs a[aria-disabled="true"]:after{content:' ·';opacity:.5}
+.tabs a[aria-disabled="true"]:hover{color:var(--muted)}
+/* A fair value the model has not refreshed is not a current reading. It keeps
+   its place - both models must stay comparable - but it stops shouting. */
+.model-stat.is-stale strong{color:var(--muted)}
+.model-stat.is-stale{border-left:2px solid var(--ochre);padding-left:10px}
+.model-stat.is-stale em{color:var(--ochre)}
+/* An input the store misread is named beside the row it spoils. */
+.unread-debt{display:block;color:var(--ochre);line-height:1.45;font-size:10px;border-left:2px solid var(--ochre);padding-left:8px;margin-top:6px}
+.range-key .unread-debt{font-size:10px;color:var(--ochre)}
+
+@page{size:A4 landscape;margin:5mm}
+@media print{
+  :root{--paper:#fff;--wash:#fff;--ink:#000;--muted:#3d3d3d;--rule:#b7b7b7;--green:#111;--green-soft:#eee;--ochre:#555;--ochre-soft:#eee}
+  html,body{background:#fff;-webkit-print-color-adjust:economy;print-color-adjust:economy}
+  body{font-size:8pt;line-height:1.23}
+  .screen-tools,.tabs,.model-toggle,.no-print,.drill{display:none!important}
+  .sheet{width:287mm;height:200mm;max-width:none;min-height:0;margin:0;box-shadow:none;grid-template-columns:61mm minmax(0,1fr);overflow:hidden}
+  .rail{background:#fff;color:#000;padding:4mm 4.5mm 3mm;border:1px solid #000;border-right-width:1.2px}
+  .brand{font-size:10pt;margin-bottom:2mm}.ticker-line h1{font-size:16.5pt}.ticker-line.long-name h1{font-size:12.5pt;letter-spacing:-.2pt;line-height:1.08}.ticker-line span{font-size:9pt;color:#333}.sector{font-size:8.5pt;margin-top:1.5mm}.description{font-size:7.5pt;line-height:1.3;margin-bottom:1.5mm}.quiet{font-size:6.6pt;color:#333}.rail-block{border-color:#777;margin-top:2.8mm;padding-top:2.2mm}.rail-block h2{font-size:8.5pt;margin-bottom:1.2mm}.quote-grid label,.quote-grid small{font-size:6.2pt;color:#333}.quote-grid strong{font-size:16pt;margin:.6mm 0}.quote-grid>div+div{border-color:#999}.rail dl>div{border-color:#bbb;padding:1mm 0;font-size:6.7pt}.control-card{font-size:6.6pt}.person{border-color:#bbb;padding:.8mm 0}.person span{color:#333}.control-numbers{margin:1.4mm 0}.control-numbers span{font-size:5.8pt;color:#333}.control-numbers b{font-size:9.5pt;color:#000}.overlap-note{font-size:5.8pt;color:#333;margin:1mm 0}.risks li{font-size:6.1pt;padding:1mm 0 1mm 3mm}.risks li:before{color:#000}.demo-warning{font-size:5.7pt;color:#333;border-color:#777;padding-top:1.5mm}
+  .main{position:relative;padding:3.2mm 4mm 5mm;border:1px solid #000;border-left:0}
+  .decision-band{grid-template-columns:1.05fr 2.45fr .95fr;min-height:20mm;margin-bottom:1.5mm;border-color:#777}.decision-band>div{padding:2mm 2.4mm}.decision-verdict{background:#eee}.decision-verdict>span{font-size:6pt;color:#000}.decision-verdict h2{font-size:12.5pt;margin:1mm 0}.decision-verdict p{font-size:6.5pt}.valuation-strip article{padding:2mm}.valuation-strip label{font-size:6pt}.valuation-strip strong{font-size:16.5pt}.valuation-strip em{font-size:6.5pt;color:#000}.valuation-strip small{font-size:5.5pt;margin-top:.7mm}.model-range{gap:1mm}.model-range b{font-size:6.8pt}.model-range span,.model-range a{font-size:5.5pt}
+  .signal-strip{margin-bottom:1.5mm}.signal-strip article{padding:1.4mm 2mm}.signal-strip span{font-size:5.5pt}.signal-strip strong{font-size:7.4pt}.signal-strip small{font-size:5.5pt}
+  .section-title h2,.two-up h2,.mini-head h2{font-size:9.5pt}.section-title small{font-size:5.5pt}.price-chart{height:34mm;max-height:none}.chart-note{font-size:5.6pt;margin:0 0 1mm}.axis{font-size:9px}.end-label{font-size:12px}
+  .two-up{padding-top:1.5mm;margin-top:.8mm}.two-up>section{padding-right:3mm}.two-up>section+section{padding-left:3mm}.two-up section>header>p strong,.growth-head p strong{font-size:12.5pt}.two-up section>header>p em,.growth-head p em{font-size:7.5pt}.two-up header small{font-size:5.5pt}.revenue-chart{height:32mm;max-height:none}.growth-head>b{font-size:5.7pt}.growth-pulse{margin-top:1mm}.growth-pulse span{padding:.8mm}.growth-pulse strong{font-size:6.7pt}.growth-pulse small{font-size:5.2pt}
+  .growth-bridge{grid-template-columns:1.1fr repeat(3,1fr) auto;gap:2mm;padding:1.1mm 1.8mm;margin:.8mm 0;font-size:5.5pt;background:#f3f3f3}.growth-bridge strong{font-size:6.3pt}
+  .mini-head>strong{font-size:9pt;color:#000}.series-key{font-size:5.3pt;margin-top:.7mm}.series-key span:before{filter:grayscale(1)}.capital-chart,.spark-history{height:21mm;max-height:none}.debt-bar{fill:#111}.ebitda-bar{fill:#aaa;stroke:#111;stroke-width:.5}.ratio-line{stroke:#111;stroke-dasharray:4 3}.ratio-dot{fill:#fff;stroke:#000}.ratio-label{fill:#000}.leverage-panels section>p{font-size:5.6pt}.mix-panels{padding-top:1.2mm}.mix-bar{height:1.8mm;margin:1.2mm 0}.mix-list{gap:.5mm 2mm}.mix-list>div{font-size:5.5pt}.mix-list i{filter:grayscale(1)}.main>footer{position:absolute;left:4mm;right:4mm;bottom:1.5mm;font-size:5.3pt;margin:0;padding-top:1mm;background:#fff}
+  .detail-wrap{max-width:none;min-height:0;margin:0;padding:0;box-shadow:none;font-size:10px}.detail-title h1{font-size:24px}.detail-wrap h2{font-size:16px;margin-top:16px}.detail-wrap h3{font-size:13px}.detail-wrap table{font-size:8px}.detail-wrap th,.detail-wrap td{padding:4px 5px}.detail-summary{margin:10px 0}.print-break{break-before:page}.detail-wrap footer{margin-top:15px}
+}
+
+@media print{
+ .overview-v3.sheet{height:auto;min-height:197mm;overflow:visible}
+ .overview-v3 .main{padding:2.5mm 4mm 4mm}.overview-v3 .rail{padding:3mm 3.5mm 3.5mm}
+ .overview-v3 .price-chart{height:37mm;max-height:none}
+ .valuation-overview{margin:2mm 0 1mm;padding-bottom:2mm;grid-template-columns:1fr 1fr .9fr}
+ .model-stat{padding-right:3mm}.model-stat+.model-stat{padding-left:3mm}.model-stat label{font-size:8pt}.model-stat strong{font-size:18pt}.model-stat em{font-size:7pt}.model-stat small{font-size:7pt}.model-stat .fit-line{display:inline;font-size:6pt;margin:0}.model-stat .fit-line:before{content:' · '}.fit-word,.fit-n,.fit-long{display:none}.fit-short{display:inline}.fit{border-color:#999;background:#f2f2f2;color:#333}.fit-gold,.fit-level{background:#e6e6e6;color:#111;border-color:#666}.model-stat>div{gap:2mm}
+ .range-key{font-size:7pt;gap:1.2mm}.range-key small{font-size:6.5pt}.legend-industry:before{background:#dedede;border-color:#555}.legend-measured:before{border-color:#555;background:repeating-linear-gradient(135deg,#fff 0 3px,#777 3px 4px)}
+ .industry-fan{fill:#e4e4e4;stroke:#888}.measured-fan{stroke:#777}.hatch-line{stroke:#777}.measured-line{stroke:#666}.end-label.measured{fill:#555}.fan-value{fill:#555}
+ .overview-v3 .bar{fill:#999}.overview-v3 .bar.current{fill:#111}.overview-v3 .axis{fill:#444}.margin-company{stroke:#111}.margin-peer{stroke:#777}.peer-dot{fill:#fff;stroke:#555}
+ .print-only{display:inline}.chart-foot{font-size:6.7pt;margin:1mm 0 2mm}.chart-foot .no-print{display:none}
+ .overview-v3 .revenue-chart{height:30mm}.overview-v3 .revenue-chart .axis,.overview-v3 .capital-chart .axis{font-size:15px}.overview-v3 .growth-value{font-size:16px}.overview-v3 .growth-acceleration{font-size:7pt;margin:.5mm 0}
+ .overview-v3 .growth-pulse strong{font-size:8pt}.overview-v3 .growth-pulse small{font-size:6.3pt}.overview-v3 .growth-bridge{font-size:7pt;padding:1.5mm;gap:2mm}.overview-v3 .growth-bridge strong{font-size:7pt}
+ .overview-v3 .capital-chart,.overview-v3 .margin-chart{height:24mm;max-height:none}.overview-v3 .metric-note{font-size:6.7pt;margin:.6mm 0}.benchmark-note{font-size:6.2pt}.overview-v3 .series-key{font-size:6.5pt}.overview-v3 .metric-label{font-size:15px}
+
+ /* The filed ownership block is new content on a sheet that was already at
+    197 of 200 mm. On paper it keeps the two largest holders and the numbers,
+    and drops the third row; on screen nothing is hidden. */
+ .overview-v3 .control-card .person{padding:.45mm 0;font-size:6.2pt;line-height:1.2}
+ .overview-v3 .control-card .control-numbers{margin:.9mm 0}
+ .overview-v3 .control-card .control-numbers b{font-size:8pt}
+ .overview-v3 .control-card .overlap-note{font-size:5.4pt;margin:.6mm 0}
+ .overview-v3 .mix-list>div{font-size:6.2pt}
+ .overview-v3 .mix-list{gap:1px 8px}
+ .overview-v3 .mix-list>div:nth-child(n+5){display:none}
+ .overview-v3 .mix-bar{display:none}
+ .overview-v3 .mix-list{display:block;line-height:1.35}
+ .overview-v3 .mix-list>div{display:inline-flex;margin-right:3mm}
+ .overview-v3 .mix-bar{height:6px;margin:4px 0 3px}
+ .overview-v3 .rail dl>div{font-size:7pt;padding:.85mm 0}.overview-v3 .rail dd{white-space:nowrap}.overview-v3 .person{font-size:7pt;padding:.8mm 0}.person-link{color:#000;text-decoration:none;cursor:default}.overview-v3 .control-numbers span{font-size:7pt}.overview-v3 .overlap-note{font-size:6.5pt}
+ .overview-v3 .rail-block{margin-top:2.2mm;padding-top:1.8mm}.overview-v3 .description{font-size:7pt}.overview-v3 .brand{margin-bottom:2mm}
+ .overview-v3 .memory-card h2{font-size:7pt;display:inline;margin:0}
+ .overview-v3 .memory-card h2:after{content:' — '}
+ .overview-v3 .memory-card{padding-top:1.6mm}.memory-fact{margin:.9mm 0}.memory-fact h3{font-size:7pt;color:#000;display:inline}.memory-fact h3:after{content:': '}.memory-fact p{font-size:7pt;line-height:1.22;display:inline}.not-connected,.not-disclosed{font-size:6.5pt;line-height:1.15;margin:.6mm 0}
+.overview-v3 .description{display:-webkit-box;-webkit-line-clamp:6;
+  -webkit-box-orient:vertical;overflow:hidden}
+ .unread-debt{color:#000;font-size:5.4pt;line-height:1.22;border-left:1pt solid #666;padding-left:1.2mm;margin-top:.8mm}
+ .range-key .unread-debt{display:none}
+ .model-stat.is-stale{border-left:1.5pt solid #666;padding-left:2mm}
+ .model-stat.is-stale strong{color:#444}.model-stat.is-stale em{color:#000}.overview-v3 .rail-block.only-placeholder{display:none}.memory-fact:nth-of-type(n+2){display:none}.rail-block .not-connected{max-height:none}.notable-owner span{font-size:7pt;color:#555}.overview-v3 .demo-warning{font-size:5.6pt;line-height:1.2;padding:1.2mm 0 0;margin-top:1.5mm}
+ .overview-v3 .growth-bridge.only-placeholder{display:none}
+ /* the rail is the column that sets the sheet height: on paper two
+    decision-makers and the insider total, on screen the full list */
+ .overview-v3 .control-card .person{margin-top:.7mm}
+ .overview-v3 .control-card .control-numbers{margin-top:.8mm;gap:.4mm 2mm}
+ .overview-v3 .control-card .overlap-note{margin-top:.6mm;font-size:5pt}
+ .overview-v3 .mix-panels{padding-top:.7mm}
+ .overview-v3 .mix-bar{height:1.4mm;margin:.8mm 0 .6mm}
+ .overview-v3 .mix-list{gap:.3mm 2mm}
+ .overview-v3 .mix-list>div{font-size:5.2pt}
+ .overview-v3 .mix-panels h2{margin-bottom:.3mm}
+ .overview-v3 .mix-list>div{font-size:6.7pt}.overview-v3 .mix-bar>span:nth-child(1),.overview-v3 .mix-list>div:nth-child(1)>i{background:#333!important}.overview-v3 .mix-bar>span:nth-child(2),.overview-v3 .mix-list>div:nth-child(2)>i{background:#777!important}.overview-v3 .mix-bar>span:nth-child(3),.overview-v3 .mix-list>div:nth-child(3)>i{background:#aaa!important}.overview-v3 .mix-bar>span:nth-child(4),.overview-v3 .mix-list>div:nth-child(4)>i{background:#ddd!important}
+ .overview-v3 .main>footer{font-size:6pt}
+}
+
+/* owner remarks 2026-09-07: growth-line value labels; toggle makes the deselected model recede */
+.growth-label{fill:var(--green);font-size:9px;font-weight:600}
+.toggle-note{margin:4px 0 0;font-size:10px;color:var(--muted)}
+.price-section[data-view=industry] .measured-stat,.price-section[data-view=industry] .legend-measured,
+.price-section[data-view=measured] .industry-stat,.price-section[data-view=measured] .legend-industry{opacity:.28}
+.price-section[data-view=industry] .legend-measured,.price-section[data-view=measured] .legend-industry{text-decoration:line-through}
+.price-section[data-view=industry] .industry-stat,.price-section[data-view=measured] .measured-stat{box-shadow:inset 3px 0 0 var(--green)}
+@media print{.growth-label{font-size:5.5pt}.toggle-note{display:none}}
+
+/* Print-only revision: size the labels in SVG units, then verify physical PDF
+   text size. A pt value inside a scaled SVG is NOT its final size on paper. */
+@media print{
+ .overview-v3 .revenue-print-chart{height:35mm;max-height:none}
+ .overview-v3 .chart-foot{margin-bottom:.5mm}
+ .overview-v3 .revenue-print-chart .axis{font-size:16px}
+ .overview-v3 .revenue-print-chart .growth-label{font-size:18px;fill:#111;stroke:#fff;stroke-width:3;paint-order:stroke;stroke-linejoin:round}
+ .overview-v3 .revenue-print-chart .growth-title{font-size:18px;font-weight:600}
+ .overview-v3 .revenue-print-chart [data-overlay="ebit-margin"] .growth-label,
+ .overview-v3 .revenue-print-chart [data-overlay="ebit-margin"] .axis{font-size:14px}
+ .overview-v3 .revenue-print-chart .growth-line{stroke:#111;stroke-width:2}
+ .overview-v3 .revenue-print-chart .growth-dot{fill:#111}
+ .overview-v3 .revenue-print-pulse .growth-pulse span{padding:.6mm .3mm;display:flex;align-items:baseline;justify-content:center;gap:1mm}
+ .overview-v3 .revenue-print-pulse .growth-pulse small,.overview-v3 .revenue-print-pulse .growth-pulse strong{display:inline}
+}
+
+/* People are evidence-led dossiers; the one-page print remains compact. */
+.people-section .people-trigger{font:inherit;text-align:left;border:0;border-radius:0;padding:0;background:none;color:inherit;cursor:pointer;text-decoration:underline;text-decoration-color:#789787;text-underline-offset:3px;font-weight:600}
+.people-section .people-trigger:hover{color:#d8e9dd;text-decoration-color:currentColor}
+.people-section .people-role{color:#c0c8c3;font-size:11px;line-height:1.4}
+.people-section .person{display:block;padding:7px 0}
+.people-section .person .people-role{display:block;margin-top:2px}
+.people-directory-trigger{font:inherit;font-size:11px;padding:7px 0;color:inherit;background:none;border:0;border-bottom:1px solid #789787;cursor:pointer;text-align:left}
+.people-dialog{box-sizing:border-box;width:min(660px,calc(100% - 32px));max-width:660px;max-height:calc(100dvh - 48px);padding:30px;background:var(--paper);border:1px solid #91a396;overflow:auto;overscroll-behavior:contain}
+.people-dialog h2{line-height:1.2;max-width:90%;font-size:27px;margin:0 0 10px;letter-spacing:-.025em}
+.people-dialog h3{font-size:14px;font-weight:600;margin:22px 0 7px}
+.people-dialog p{font-size:13px;line-height:1.65;margin:9px 0}
+.people-dialog .people-role{font-weight:600;color:var(--green)}
+.people-dialog .people-trigger{font:inherit;font-weight:600;text-align:left;color:var(--forest);background:transparent;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.people-dialog .people-evidence{padding:13px 15px;background:var(--green-soft);border-left:3px solid var(--green);font-size:12px;overflow-wrap:anywhere}
+.people-dialog .people-evidence dt{color:var(--muted)}
+.people-dialog .people-evidence dd{margin:0 0 8px;font-variant-numeric:tabular-nums}
+.people-dialog .people-links{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0}
+.people-dialog .people-links a{display:inline-flex;align-items:center;padding:7px 11px;border:1px solid #aabdb0;color:var(--forest);font-size:12px;text-decoration:none;background:#fff}
+.people-dialog .people-links a:hover{background:var(--green-soft);border-color:var(--green)}
+.people-dialog a{overflow-wrap:anywhere}
+.people-dialog .person{border-bottom:1px solid var(--rule);padding:10px 0}
+.people-dialog .person span{color:var(--muted)}
+.people-dialog .dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;position:sticky;top:-30px;z-index:2;margin:-30px -30px 18px;padding:24px 30px 16px;background:var(--paper);border-bottom:1px solid var(--rule)}
+.people-dialog .dialog-head h2{margin:0;max-width:none;font-size:24px;flex:1}
+.people-dialog .dialog-close{position:static;float:none;flex:0 0 36px;min-width:36px;min-height:36px;font-size:22px;line-height:1;background:var(--paper);color:var(--forest);border:1px solid var(--rule);cursor:pointer}
+.people-directory-list{list-style:none;padding:0;margin:0}
+.people-directory-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.people-directory-list .people-role{display:block;font-size:12px;font-weight:400;color:var(--muted);margin-top:2px;line-height:1.45}
+.people-sources{list-style:none;padding:0;font-size:13px}
+.people-sources li{margin:10px 0}
+.people-sources li span{display:block;font-size:11px;color:var(--muted)}
+.people-bio>.people-evidence,.people-disclosure>.people-evidence,.people-disclosures>p:last-child{background:none;border:0;padding:0;font-size:12px;color:var(--muted)}
+.people-disclosure dl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:9px 18px;font-size:13px;line-height:1.45;font-variant-numeric:tabular-nums}
+.people-disclosure dt{color:var(--muted)}
+.people-disclosure dd{margin:0;text-align:right;overflow-wrap:anywhere}
+.people-dialog :focus-visible{outline:2px solid var(--green);outline-offset:3px}
+@media screen and (max-width:680px){
+  .people-dialog{width:calc(100% - 20px);max-height:calc(100dvh - 20px);padding:20px}
+  .people-dialog h2{font-size:23px}.people-dialog .people-trigger{padding:8px 0}
+  .people-dialog .dialog-head{top:-20px;margin:-20px -20px 16px;padding:20px 20px 14px;gap:10px}
+  .people-dialog .dialog-head h2{font-size:22px}
+  .people-disclosure dl{gap:9px 12px;font-size:12px}
+}
+@media print{
+  .people-dialog,.people-directory-trigger{display:none!important}
+  .overview-v3 .people-section .person{margin-top:.35mm;padding:.4mm 0;font-size:6pt;line-height:1.15}
+  .overview-v3 .people-section .people-trigger{font-size:6pt;color:#111;text-decoration:none}
+  .overview-v3 .people-section .people-role{font-size:5.7pt;line-height:1.15;margin-top:.3mm;color:#333}
+}
+
+/* Progressive enhancement: printed and script-free charts retain the original SVG. */
+@media screen{
+  .price-explorer.is-interactive > svg.price-chart{display:none}
+  .chart-interactive{padding-top:10px;min-width:0}
+  .chart-controls,.chart-presets,.chart-actions,.chart-dates{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+  .chart-controls{justify-content:space-between;gap:10px;margin-bottom:9px}
+  .chart-controls button{font:inherit;font-size:12px;line-height:1.2;min-height:34px;padding:7px 11px;color:var(--forest);background:var(--paper);border:1px solid var(--rule);border-radius:4px;cursor:pointer}
+  .chart-controls button:hover{background:var(--green-soft);border-color:var(--green)}
+  .chart-controls button[aria-pressed=true]{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+  .chart-actions button{min-width:34px;font-size:20px;padding:3px 9px}
+  .chart-dates{font-size:11px;color:var(--muted)}
+  .chart-dates label{display:flex;align-items:center;gap:4px}
+  .chart-dates input{font:inherit;font-size:12px;max-width:130px;min-height:34px;padding:4px 5px;border:1px solid var(--rule);border-radius:4px;background:var(--paper);color:var(--ink)}
+  .chart-controls button:focus-visible,.chart-dates input:focus-visible,.chart-viewport:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+  [data-chart-range]{display:block;font-size:12px;letter-spacing:.03em;color:var(--muted);font-variant-numeric:tabular-nums;margin:3px 0}
+  .chart-viewport{cursor:grab;user-select:none;border-radius:4px}
+  .chart-viewport:active{cursor:grabbing}
+  .chart-readout,.chart-tooltip{font-size:12px;line-height:1.6;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+  .chart-readout{color:var(--forest);padding:8px 10px;border-top:1px solid var(--rule);background:var(--green-soft)}
+  .chart-tooltip{padding:7px 10px;color:var(--paper);background:var(--forest);border-radius:4px;margin:4px 0}
+  .chart-tooltip[hidden]{display:none}
+  .chart-hint{font-size:11px;color:var(--muted);line-height:1.5;margin:8px 0 12px}
+}
+@media screen and (max-width:680px){
+  .chart-controls{justify-content:flex-start;gap:8px}
+  .chart-presets{flex:1;gap:4px}
+  .chart-presets button{font-size:11px;padding:7px 8px}
+  .chart-dates{width:100%;gap:5px}
+  .chart-dates input{max-width:114px;font-size:11px}
+  .chart-dates button{font-size:11px;padding:7px}
+  .chart-readout,.chart-tooltip{font-size:11px}
+}
+
+/* The financial story has its own screen rhythm. Paper keeps the original
+   combined SVG and header pulse; these new wrappers create no print boxes. */
+.revenue-bars-figure,.revenue-growth-figure,.revenue-screen-pulse,.margin-screen-chart,.margin-screen-table{display:none}
+.revenue-print-pulse,.financial-history-chart{display:contents}
+@media screen{
+  .overview-v3 .main{container-name:financial-main;container-type:inline-size}
+  .overview-v3 .revenue-panels{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-rows:auto auto auto auto auto;
+    row-gap:12px;padding-top:20px;margin-top:16px;
+  }
+  .overview-v3 .revenue-panels>section{
+    display:grid;grid-template-rows:subgrid;grid-row:span 5;
+    align-items:start;padding-right:20px;
+  }
+  .overview-v3 .revenue-panels>section+section{padding-right:0;padding-left:20px}
+  .overview-v3 .revenue-panels>section>header{grid-row:1}
+  .overview-v3 .revenue-panels h2,.overview-v3 .leverage-panels h2{font-size:20px;line-height:1.25}
+  .overview-v3 .revenue-panels section>header>p,.overview-v3 .revenue-panels .growth-head p{
+    margin:6px 0 0;gap:14px;flex-wrap:wrap;
+  }
+  .overview-v3 .revenue-panels section>header>p strong,.overview-v3 .revenue-panels .growth-head p strong{
+    font-size:30px;line-height:1.2;letter-spacing:-.5px;
+  }
+  .overview-v3 .revenue-panels section>header>p em,.overview-v3 .revenue-panels .growth-head p em{font-size:14px}
+  .overview-v3 .revenue-panels header small{display:block;margin-top:8px;font-size:12px;line-height:1.45}
+  .overview-v3 .revenue-panels .growth-head{display:block}
+  .overview-v3 .revenue-print-pulse,.overview-v3 .revenue-print-chart{display:none}
+  .overview-v3 .revenue-chart-group{display:contents}
+  .overview-v3 .revenue-bars-figure,.overview-v3 .revenue-growth-figure{
+    display:block;min-width:0;margin:0;overflow-x:auto;overscroll-behavior-x:contain;
+  }
+  .overview-v3 .revenue-bars-figure{grid-row:2}
+  .overview-v3 .revenue-growth-figure{grid-row:3;padding-top:14px;border-top:1px solid var(--rule)}
+  .overview-v3 .revenue-growth-figure figcaption{font-size:14px;font-weight:600;line-height:1.4;margin:0 0 6px}
+  .overview-v3 .revenue-bars-svg,.overview-v3 .revenue-growth-svg{
+    display:block;width:100%;height:auto;min-width:450px;max-width:680px;
+  }
+  .overview-v3 .revenue-bars-svg .axis,.overview-v3 .revenue-growth-svg .axis,
+  .overview-v3 .revenue-growth-svg .growth-label{font-size:20px}
+  .overview-v3 .revenue-bars-svg [data-overlay="ebit-margin"] .growth-label{font-size:18px}
+  .overview-v3 .revenue-growth-svg .growth-line{stroke-width:3;vector-effect:non-scaling-stroke}
+  .overview-v3 .revenue-growth-svg .zero{stroke-width:1.2;vector-effect:non-scaling-stroke}
+  .overview-v3 .revenue-values{max-width:680px;margin-top:8px;font-size:12px;color:var(--muted)}
+  .overview-v3 .revenue-values summary{width:max-content;max-width:100%;padding:7px 0;cursor:pointer;text-underline-offset:3px}
+  .overview-v3 .revenue-values summary:hover{color:var(--green)}
+  .overview-v3 .revenue-values summary:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+  .overview-v3 .revenue-values table{font-size:12px;line-height:1.4;margin:6px 0}
+  .overview-v3 .revenue-values th,.overview-v3 .revenue-values td{padding:7px 8px}
+  .overview-v3 .revenue-screen-pulse{display:block;grid-row:4}
+  .overview-v3 .revenue-screen-pulse .growth-pulse{margin:0}
+  .overview-v3 .revenue-screen-pulse .growth-pulse span{padding:9px 6px 8px}
+  .overview-v3 .revenue-screen-pulse .growth-pulse small{font-size:12px;color:var(--muted)}
+  .overview-v3 .revenue-screen-pulse .growth-pulse strong{font-size:16px;margin-top:3px}
+  .overview-v3 .growth-acceleration{grid-row:5;font-size:12px;line-height:1.5;margin:0;text-align:left;overflow-wrap:anywhere}
+  .overview-v3 .revenue-panels .is-unavailable>.metric-note{grid-row:2;margin:0;padding:16px 0;font-size:14px;line-height:1.5}
+  .overview-v3 .revenue-panels .is-unavailable>.benchmark-note{grid-row:3;font-size:12px;line-height:1.5}
+  .overview-v3 .growth-bridge{
+    grid-template-columns:minmax(140px,.8fr) repeat(3,minmax(0,1fr));
+    gap:12px 18px;padding:14px 16px;margin:22px 0 0;font-size:12px;line-height:1.45;
+  }
+  .overview-v3 .growth-bridge.only-placeholder{grid-template-columns:minmax(140px,.8fr) minmax(0,2fr) minmax(0,1fr)}
+  .overview-v3 .growth-bridge strong{font-size:13px}
+  .overview-v3 .growth-bridge span{white-space:normal}
+  .overview-v3 .growth-bridge small{font-size:12px}
+  .overview-v3 .leverage-panels{padding-top:20px;margin-top:24px}
+  .overview-v3 .leverage-panels>section{padding-right:20px}
+  .overview-v3 .leverage-panels>section+section{padding-left:20px;padding-right:0}
+  .overview-v3 .leverage-panels .mini-head{min-height:68px;gap:14px}
+  .overview-v3 .leverage-panels .mini-head>strong{font-size:23px;line-height:1.2;white-space:nowrap}
+  .overview-v3 .leverage-panels .series-key{font-size:12px;line-height:1.4;flex-wrap:wrap;gap:5px 12px;margin-top:7px}
+  .overview-v3 .financial-history-chart{display:block;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;margin:12px 0}
+  .overview-v3 .financial-history-chart>.margin-chart{display:none}
+  .overview-v3 .margin-screen-chart{display:block;width:100%;height:auto;min-width:450px;max-width:680px}
+  .overview-v3 .margin-screen-chart .axis{font-size:19px}
+  .overview-v3 .margin-screen-chart .metric-label{font-size:21px;font-weight:500}
+  .overview-v3 .margin-screen-chart>.margin-screen-point:first-of-type .company-label{text-anchor:start}
+  .overview-v3 .margin-screen-chart .margin-company{stroke-width:2.5;vector-effect:non-scaling-stroke}
+  .overview-v3 .margin-screen-chart .margin-peer{stroke-width:1.5;vector-effect:non-scaling-stroke}
+  .overview-v3 .margin-screen-table{display:table;width:100%;min-width:450px;max-width:680px;margin:10px 0 0;border-collapse:collapse;font-size:12px;line-height:1.4}
+  .overview-v3 .margin-screen-table th,.overview-v3 .margin-screen-table td{padding:8px 6px;white-space:nowrap}
+  .overview-v3 .margin-screen-table thead th{background:transparent;color:var(--muted);font-weight:500}
+  .overview-v3 .margin-screen-table tbody th{background:transparent;color:var(--muted);font-weight:400}
+  .overview-v3 .margin-screen-table tbody tr:first-child th,.overview-v3 .margin-screen-table tbody tr:first-child td{color:var(--green);font-weight:600}
+  .overview-v3 .capital-chart,.overview-v3 .margin-chart{height:auto;min-width:450px;max-width:680px;max-height:none}
+  .overview-v3 .capital-chart .axis,.overview-v3 .margin-chart .axis[text-anchor="middle"],
+  .overview-v3 .capital-chart .ratio-label,.overview-v3 .margin-chart .metric-label{font-size:20px}
+  .overview-v3 .margin-chart .axis[text-anchor="end"]{font-size:14px}
+  .overview-v3 .margin-chart .peer-label{font-size:14px;transform:translateY(-5px)}
+  .overview-v3 .leverage-panels .metric-note,.overview-v3 .leverage-panels .benchmark-note{font-size:12px;line-height:1.5;margin:5px 0}
+  .overview-v3 .mix-panels{padding-top:18px;margin-top:20px}
+}
+@media screen{
+  @container financial-main (max-width:979px){
+    .overview-v3 .revenue-panels,.overview-v3 .leverage-panels{display:block}
+    .overview-v3 .revenue-panels>section{display:grid;grid-template-rows:auto auto auto auto auto;row-gap:12px;padding:0}
+    .overview-v3 .revenue-panels>section+section{border-left:0;border-top:1px solid var(--rule);padding:22px 0 0;margin-top:24px}
+    .overview-v3 .revenue-panels .revenue-annual{grid-template-rows:auto auto auto}
+    .overview-v3 .leverage-panels>section{padding:0}
+    .overview-v3 .leverage-panels>section+section{border-left:0;border-top:1px solid var(--rule);padding:22px 0 0;margin-top:24px}
+    .overview-v3 .growth-bridge,.overview-v3 .growth-bridge.only-placeholder{grid-template-columns:1fr 1fr}
+    .overview-v3 .growth-bridge strong,.overview-v3 .growth-bridge small{grid-column:1/-1}
+  }
+}
+/* .main becomes display:contents in the existing small-screen reading order,
+   so this viewport rule is the explicit equivalent of the container rule. */
+@media screen and (max-width:680px){
+  .overview-v3 .revenue-panels,.overview-v3 .leverage-panels{display:block}
+  .overview-v3 .revenue-panels>section{display:grid;grid-template-rows:auto auto auto auto auto;row-gap:12px;padding:0}
+  .overview-v3 .revenue-panels>section+section{border-left:0;border-top:1px solid var(--rule);padding:22px 0 0;margin-top:24px}
+  .overview-v3 .revenue-panels .revenue-annual{grid-template-rows:auto auto auto}
+  .overview-v3 .revenue-panels h2,.overview-v3 .leverage-panels h2{font-size:19px}
+  .overview-v3 .revenue-panels section>header>p strong,.overview-v3 .revenue-panels .growth-head p strong{font-size:28px}
+  .overview-v3 .growth-bridge,.overview-v3 .growth-bridge.only-placeholder{grid-template-columns:1fr;padding:12px;margin-top:22px}
+  .overview-v3 .growth-bridge strong,.overview-v3 .growth-bridge small{grid-column:auto}
+  .overview-v3 .leverage-panels{margin-top:22px}
+  .overview-v3 .leverage-panels>section{padding:0}
+  .overview-v3 .leverage-panels>section+section{border-left:0;border-top:1px solid var(--rule);padding:22px 0 0;margin-top:24px}
+  .overview-v3 .leverage-panels .mini-head{min-height:0}
+}
+
+/* Real-company detail reading surface. Scoped to leave the accepted A4
+   one-pager and the explicit demo detail route untouched. */
+.detail-page .real-details{color:var(--ink);background:var(--paper);box-shadow:none}
+.detail-page .real-details .real-detail-head{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;padding:30px 0 22px;border-bottom:2px solid var(--forest)}
+.detail-page .real-details .company-kicker{margin:0 0 6px;color:var(--green);font-size:13px;font-weight:600;letter-spacing:.01em}
+.detail-page .real-details .real-detail-head h1{margin:0;font-size:clamp(30px,4vw,48px);font-weight:450;line-height:1.05}
+.detail-page .real-details .real-detail-head p:not(.company-kicker){max-width:70ch;margin:10px 0 0;color:var(--muted);line-height:1.55}
+.detail-page .real-details .real-detail-head button{border:1px solid var(--green);border-radius:2px;padding:8px 13px;background:transparent;color:var(--forest);cursor:pointer}
+.detail-page .real-details .candidate-note{display:grid;grid-template-columns:minmax(150px,.3fr) minmax(0,1fr);gap:20px;margin:24px 0 0;padding:14px 0;border-block:1px solid var(--rule)}
+.detail-page .real-details .candidate-note strong{overflow-wrap:anywhere;color:var(--green);font-size:12px}
+.detail-page .real-details .candidate-note p{max-width:80ch;margin:0;color:var(--muted);line-height:1.5}
+.detail-page .real-details .date-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 38px;border-bottom:1px solid var(--rule)}
+.detail-page .real-details .date-strip span{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border-right:1px solid var(--rule);font-variant-numeric:tabular-nums}
+.detail-page .real-details .date-strip span:last-child{border-right:0}
+.detail-page .real-details .date-strip b{font-weight:500;color:var(--muted)}
+.detail-page .real-details>section{padding:30px 0;border-top:1px solid var(--rule)}
+.detail-page .real-details>section:first-of-type{border-top:0}
+.detail-page .real-details h2{display:flex;align-items:baseline;gap:8px;margin:0 0 10px;font-size:24px;font-weight:500}
+.detail-page .real-details h2 span{color:var(--muted);font-size:12px;font-weight:400}
+.detail-page .real-details h3{margin:0 0 10px;font-size:17px;font-weight:550}
+.detail-page .real-details h4{margin:20px 0 8px;font-size:13px;font-weight:600}
+.detail-page .real-details .section-note{max-width:80ch;margin:0 0 16px;color:var(--muted);line-height:1.55}
+.detail-page .real-details .detail-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+.detail-page .real-details .history-columns{grid-template-columns:repeat(3,minmax(0,1fr))}
+.detail-page .real-details .model-evidence{min-width:0;padding-top:14px;border-top:3px solid var(--green)}
+.detail-page .real-details .table-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+.detail-page .real-details table{min-width:640px;font-variant-numeric:tabular-nums}
+.detail-page .real-details .history-columns table{min-width:300px}
+.detail-page .real-details th{position:sticky;top:0;z-index:1;white-space:nowrap}
+.detail-page .real-details th,.detail-page .real-details td{text-align:right;vertical-align:top}
+.detail-page .real-details th:first-child,.detail-page .real-details td:first-child{text-align:left}
+.detail-page .real-details td{overflow-wrap:anywhere}
+.detail-page .real-details .evidence-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}
+.detail-page .real-details .evidence-list>div{display:flex;justify-content:space-between;gap:18px;padding:8px 0;border-bottom:1px solid var(--rule)}
+.detail-page .real-details .evidence-list dt{color:var(--muted)}
+.detail-page .real-details .evidence-list dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.detail-page .real-details details{margin-top:14px;color:var(--muted)}
+.detail-page .real-details details summary{width:max-content;max-width:100%;cursor:pointer;color:var(--green)}
+.detail-page .real-details details p{overflow-wrap:anywhere}
+.detail-page .real-details .detail-empty{max-width:80ch;padding:14px 16px;border-left:3px solid var(--rule);background:#f3f6f3;color:var(--muted)}
+.detail-page .real-details .detail-empty strong{color:var(--forest)}
+.detail-page .real-details .detail-empty p{margin:4px 0 0}
+.detail-page .real-details .people-section{margin:0;padding:0;border:0}
+.detail-page .real-details footer{gap:24px;line-height:1.45}
+.detail-page .real-details footer span:last-child{max-width:80ch;text-align:right}
+
+@media screen and (max-width:390px){
+  .detail-page{overflow-x:hidden}
+  .detail-page .real-details{width:100%;padding:14px}
+  .detail-page .real-details .tabs{height:auto;max-width:100%;flex-wrap:wrap;overflow-x:visible}
+  .detail-page .real-details .real-detail-head,.detail-page .real-details .candidate-note{display:block}
+  .detail-page .real-details .real-detail-head button{margin-top:16px}
+  .detail-page .real-details .candidate-note p{margin-top:8px}
+  .detail-page .real-details .date-strip,.detail-page .real-details .detail-columns,.detail-page .real-details .history-columns,.detail-page .real-details .evidence-list{grid-template-columns:1fr}
+  .detail-page .real-details .date-strip span{border-right:0;border-bottom:1px solid var(--rule)}
+  .detail-page .real-details .date-strip span:last-child{border-bottom:0}
+  .detail-page .real-details>section{padding:24px 0}
+  .detail-page .real-details footer{display:block}
+  .detail-page .real-details footer span{display:block;text-align:left!important;margin-top:6px}
+}
+
+@page real-detail{size:A4 portrait;margin:12mm}
+@media print{
+  .detail-page .real-details{page:real-detail;max-width:none;margin:0;padding:0;background:#fff}
+  .detail-page .real-details .tabs,.detail-page .real-details .no-print{display:none!important}
+  .detail-page .real-details .table-scroll{overflow:visible}
+  .detail-page .real-details table{min-width:0;font-size:8pt}
+  .detail-page .real-details thead{display:table-header-group}
+  .detail-page .real-details tr,.detail-page .real-details .model-evidence{break-inside:avoid}
+  .detail-page .real-details .detail-columns,.detail-page .real-details .history-columns{grid-template-columns:1fr 1fr}
+  .detail-page .real-details>section{break-before:auto;padding:16px 0}
+}
+</style></head><body class="overview-page"><div class="screen-tools"><span>Карточка компании · AMETEK INC/</span><div><a href="Datum-onepager-AME.pdf" target="_blank" rel="noopener">PDF для ЧБ печати</a><button data-print>Печать</button></div></div>
+<article class="sheet overview-v3"><aside class="rail">
+<div class="brand">Datum</div><div class="ticker-line"><h1>AMETEK INC/</h1><span>AME</span></div>
+<p class="sector">США / Industrial Instruments For Measurement, Display, and Control</p><p class="description">AMETEK Inc. manufactures and sells electronic instruments and electromechanical devices in North America, Europe, Asia, and South America. The company was founded in 1930. On September 4, 2019, the company acquired Pacific Design Technologies Inc.</p>
+<p class="quiet">Основана в 1930 · NYSE<br><a class="company-site" href="http://www.ametek.com" target="_blank" rel="noopener noreferrer" title="Сайт компании — откроется в новой вкладке">ametek.com</a></p>
+<section class="rail-block quote-grid"><div><label>Цена</label><strong>$252</strong><small>2026-10-05</small></div><div><label>Капитализация</label><strong>$56<span> млрд</span></strong><small>229 млн акций · капитализация на 2026-08-04</small></div></section>
+<section class="rail-block rail-financials"><h2>Доходность и баланс</h2><dl><div><dt>Операционная маржа</dt><dd>25.9%</dd></div><div><dt>Свободный денежный поток</dt><dd>н/д</dd></div><div><dt>ROIC / стоимость капитала</dt><dd>12% / 9%</dd></div><div><dt>Долг / деньги</dt><dd>$2.04 / $0.49 млрд</dd></div><div><dt>Погашения за 12 мес.</dt><dd>н/д</dd></div></dl></section>
+<section class="rail-block control-card people-section"><h2>Кто принимает решения</h2><div class="person people-person"><button type="button" class="people-trigger" data-dialog="people-ame-person-4" aria-haspopup="dialog">Zapico David A</button><span class="people-role">CHIEF EXECUTIVE OFFICER <span class="people-historical">(форма SEC)</span></span></div><div class="person people-person"><button type="button" class="people-trigger" data-dialog="people-ame-person-1" aria-haspopup="dialog">Oscher Ronald J</button><span class="people-role">CHIEF ADMINISTRATIVE OFFICER <span class="people-historical">(форма SEC)</span></span></div><div class="person people-person"><button type="button" class="people-trigger" data-dialog="people-ame-person-2" aria-haspopup="dialog">Speranza Emanuela</button><span class="people-role">CHIEF COMMERCIAL OFFICER <span class="people-historical">(форма SEC)</span></span></div><button type="button" class="people-directory-trigger no-print" data-dialog="people-ame-directory" aria-haspopup="dialog">Все люди и владельцы (6)</button><p class="overlap-note people-evidence">Доли — исторические раскрытия SEC, не текущий контроль.</p></section>
+<section class="rail-block memory-card"><h2>Чем запомнить компанию</h2><div class="memory-fact"><h3>Где компания</h3><p>Штаб-квартира: Berwyn, PA. Зарегистрирована в штате DE.</p></div><div class="memory-fact notable-owner"><h3>Заметный акционер / новый пакет</h3><b>The Vanguard Group</b><span>11.1% · обновление пакета · 2024-02-13</span></div></section>
+<p class="demo-warning">Числа — из кандидата второй тысячи (pilot2000, 2026-09-09; манифест выпущен с красным гейтом, допуска к публикации нет): DCF Industry 2026-08-04 и Measured 2026-08-04; цена на 2026-10-05; отчётность по 10-Q/10-K, поданной 2026-08-04; кварталы и EBITDA — EDGAR companyfacts (10-Q/10-K, последний Q2&#x27;26). Из форм SEC: владение, структура выручки, факты. Риски — нет.</p>
+</aside><main class="main"><nav class="tabs"><a href="index.html" class="active" aria-current="page">Обзор</a><a href="financials.html" class="">Финансы</a><a href="valuation.html" class="">DCF</a><a href="owners.html" class="">Владельцы</a><a href="methodology.html" class="">Методика</a></nav>
+<section class="price-section"><header class="section-title"><h2>Цена и диапазон DCF</h2><div class="model-toggle no-print" role="group" aria-label="Модель DCF"><button data-model="both" aria-pressed="true">Обе</button><button data-model="industry" aria-pressed="false">Industry</button><button data-model="measured" aria-pressed="false">Measured</button></div></header><p class="toggle-note no-print" data-toggle-note></p>
+<div class="valuation-overview"><article class="model-stat industry-stat"><label>Industry DCF</label><div><strong>$99</strong><em>-61% к цене</em></div><small>Не ориентир для цены · 2026-08-04</small><small class="fit-line"><span class="fit-word">подгонка </span><i class="fit fit-weak"><span class="fit-long">weak</span><span class="fit-short">weak</span></i><span class="fit-n"> · 31 винтажей</span></small></article><article class="model-stat measured-stat"><label>Measured DCF</label><div><strong>$93</strong><em>-63% к цене</em></div><small>Норма ±1σ $118–195 · 2026-08-04</small><small class="fit-line"><span class="fit-word">подгонка </span><i class="fit fit-shape"><span class="fit-long">shape-informative (level offset)</span><span class="fit-short">shape</span></i><span class="fit-n"> · 55 винтажей</span></small></article><article class="range-key"><span class="legend-industry">Industry: заливка</span><span class="legend-measured">Measured: штриховка</span><small>Разрыв: DCF / цена − 1</small></article></div><div class="price-explorer" data-price-explorer><svg class="price-chart" viewBox="0 0 1160 286" role="img" aria-label="Цена, базовые DCF и меняющиеся сценарные диапазоны"><defs><pattern id="measured-hatch" width="7" height="7" patternUnits="userSpaceOnUse"><path d="M0 7L7 0" class="hatch-line"/></pattern></defs><line class="grid" x1="48" x2="965" y1="253.0" y2="253.0"/><text class="axis" x="37" y="258.0" text-anchor="end">0</text><line class="grid" x1="48" x2="965" y1="213.5" y2="213.5"/><text class="axis" x="37" y="218.5" text-anchor="end">50</text><line class="grid" x1="48" x2="965" y1="174.0" y2="174.0"/><text class="axis" x="37" y="179.0" text-anchor="end">100</text><line class="grid" x1="48" x2="965" y1="134.5" y2="134.5"/><text class="axis" x="37" y="139.5" text-anchor="end">150</text><line class="grid" x1="48" x2="965" y1="95.0" y2="95.0"/><text class="axis" x="37" y="100.0" text-anchor="end">200</text><line class="grid" x1="48" x2="965" y1="55.5" y2="55.5"/><text class="axis" x="37" y="60.5" text-anchor="end">250</text><line class="grid" x1="48" x2="965" y1="16.0" y2="16.0"/><text class="axis" x="37" y="21.0" text-anchor="end">300</text><g data-series="industry"><path class="industry-line" d="M 451.9,205.4 H 464.8 V 204.1 H 481.8 V 202.7 H 498.6 V 199.7 H 519.0 V 200.6 H 532.9 V 201.0 H 549.6 V 209.4 H 565.5 V 212.1 H 586.1 V 215.1 H 600.0 V 211.3 H 616.7 V 209.0 H 633.5 V 203.3 H 654.2 V 183.9 H 667.1 V 177.4 H 683.9 V 173.4 H 700.6 V 171.5 H 721.3 V 169.5 H 734.2 V 162.3 H 751.0 V 150.3 H 767.7 V 197.0 H 788.8 V 197.8 H 801.7 V 196.8 H 818.4 V 187.7 H 835.2 V 189.2 H 855.9 V 183.1 H 868.8 V 186.7 H 885.5 V 188.5 H 902.3 V 187.2 H 922.6 V 184.4 H 935.9 V 179.9 H 953.6 V 175.0 H 965.0 V 175.0"/><g data-series-label="industry"><text class="end-label industry" x="985" y="168.5">Industry $99</text></g></g><g data-series="measured"><path class="fan-band measured-fan" d="M 48.0,204.6 L 60.9,204.6 L 60.9,200.4 L 78.8,200.4 L 78.8,199.5 L 95.2,199.5 L 95.2,195.4 L 116.2,195.4 L 116.2,196.8 L 128.9,196.8 L 128.9,194.8 L 145.9,194.8 L 145.9,197.1 L 162.9,197.1 L 162.9,195.7 L 183.1,195.7 L 183.1,187.2 L 195.3,187.2 L 195.3,187.7 L 213.0,187.7 L 213.0,189.4 L 230.0,189.4 L 230.0,193.9 L 250.6,193.9 L 250.6,193.0 L 263.3,193.0 L 263.3,196.4 L 280.3,196.4 L 280.3,196.4 L 297.1,196.4 L 297.1,197.6 L 317.7,197.6 L 317.7,201.3 L 331.4,201.3 L 331.4,202.6 L 347.2,202.6 L 347.2,202.3 L 364.2,202.3 L 364.2,199.2 L 384.8,199.2 L 384.8,195.0 L 397.7,195.0 L 397.7,191.2 L 414.5,191.2 L 414.5,173.7 L 431.5,173.7 L 431.5,168.5 L 451.9,168.5 L 451.9,166.4 L 464.8,166.4 L 464.8,163.3 L 481.8,163.3 L 481.8,158.7 L 498.6,158.7 L 498.6,153.9 L 519.0,153.9 L 519.0,156.4 L 532.9,156.4 L 532.9,155.1 L 549.6,155.1 L 549.6,166.8 L 565.5,166.8 L 565.5,171.7 L 586.1,171.7 L 586.1,176.9 L 600.0,176.9 L 600.0,169.0 L 616.7,169.0 L 616.7,166.2 L 633.5,166.2 L 633.5,155.8 L 654.2,155.8 L 654.2,126.1 L 667.1,126.1 L 667.1,115.7 L 683.9,115.7 L 683.9,109.3 L 700.6,109.3 L 700.6,104.4 L 721.3,104.4 L 721.3,107.1 L 734.2,107.1 L 734.2,96.2 L 751.0,96.2 L 751.0,77.5 L 767.7,77.5 L 767.7,144.9 L 788.8,144.9 L 788.8,149.1 L 801.7,149.1 L 801.7,146.2 L 818.4,146.2 L 818.4,129.4 L 835.2,129.4 L 835.2,129.7 L 855.9,129.7 L 855.9,119.3 L 868.8,119.3 L 868.8,124.0 L 885.5,124.0 L 885.5,124.4 L 902.3,124.4 L 902.3,122.1 L 922.6,122.1 L 922.6,114.1 L 935.9,114.1 L 935.9,107.5 L 953.6,107.5 L 953.6,99.3 L 965.0,99.3 L 965.0,99.3 L 965.0,159.8 L 965.0,159.8 L 953.6,159.8 L 953.6,164.8 L 935.9,164.8 L 935.9,168.8 L 922.6,168.8 L 922.6,173.7 L 902.3,173.7 L 902.3,175.0 L 885.5,175.0 L 885.5,174.8 L 868.8,174.8 L 868.8,172.0 L 855.9,172.0 L 855.9,178.3 L 835.2,178.3 L 835.2,178.1 L 818.4,178.1 L 818.4,188.3 L 801.7,188.3 L 801.7,190.0 L 788.8,190.0 L 788.8,187.5 L 767.7,187.5 L 767.7,146.6 L 751.0,146.6 L 751.0,158.0 L 734.2,158.0 L 734.2,164.6 L 721.3,164.6 L 721.3,162.9 L 700.6,162.9 L 700.6,165.9 L 683.9,165.9 L 683.9,169.8 L 667.1,169.8 L 667.1,176.1 L 654.2,176.1 L 654.2,194.1 L 633.5,194.1 L 633.5,200.4 L 616.7,200.4 L 616.7,202.1 L 600.0,202.1 L 600.0,206.8 L 586.1,206.8 L 586.1,203.8 L 565.5,203.8 L 565.5,200.8 L 549.6,200.8 L 549.6,193.6 L 532.9,193.6 L 532.9,194.5 L 519.0,194.5 L 519.0,192.9 L 498.6,192.9 L 498.6,195.9 L 481.8,195.9 L 481.8,198.6 L 464.8,198.6 L 464.8,200.5 L 451.9,200.5 L 451.9,201.8 L 431.5,201.8 L 431.5,204.9 L 414.5,204.9 L 414.5,215.5 L 397.7,215.5 L 397.7,217.9 L 384.8,217.9 L 384.8,220.4 L 364.2,220.4 L 364.2,222.3 L 347.2,222.3 L 347.2,222.5 L 331.4,222.5 L 331.4,221.7 L 317.7,221.7 L 317.7,219.4 L 297.1,219.4 L 297.1,218.7 L 280.3,218.7 L 280.3,218.7 L 263.3,218.7 L 263.3,216.6 L 250.6,216.6 L 250.6,217.2 L 230.0,217.2 L 230.0,214.4 L 213.0,214.4 L 213.0,213.4 L 195.3,213.4 L 195.3,213.1 L 183.1,213.1 L 183.1,218.3 L 162.9,218.3 L 162.9,219.1 L 145.9,219.1 L 145.9,217.7 L 128.9,217.7 L 128.9,218.9 L 116.2,218.9 L 116.2,218.1 L 95.2,218.1 L 95.2,220.5 L 78.8,220.5 L 78.8,221.1 L 60.9,221.1 L 60.9,223.7 L 48.0,223.7 Z"/><path class="measured-line" d="M 48.0,229.9 H 60.9 V 227.9 H 78.8 V 227.4 H 95.2 V 225.5 H 116.2 V 226.1 H 128.9 V 225.2 H 145.9 V 226.3 H 162.9 V 225.7 H 183.1 V 221.6 H 195.3 V 221.8 H 213.0 V 222.6 H 230.0 V 224.8 H 250.6 V 224.4 H 263.3 V 226.0 H 280.3 V 226.0 H 297.1 V 226.5 H 317.7 V 228.3 H 331.4 V 229.0 H 347.2 V 228.8 H 364.2 V 227.3 H 384.8 V 225.3 H 397.7 V 223.5 H 414.5 V 215.1 H 431.5 V 212.7 H 451.9 V 211.6 H 464.8 V 210.2 H 481.8 V 208.0 H 498.6 V 205.7 H 519.0 V 206.9 H 532.9 V 206.2 H 549.6 V 211.9 H 565.5 V 214.2 H 586.1 V 216.6 H 600.0 V 212.9 H 616.7 V 211.5 H 633.5 V 206.6 H 654.2 V 192.4 H 667.1 V 187.4 H 683.9 V 184.4 H 700.6 V 182.1 H 721.3 V 183.4 H 734.2 V 178.2 H 751.0 V 169.2 H 767.7 V 201.4 H 788.8 V 203.4 H 801.7 V 202.0 H 818.4 V 194.0 H 835.2 V 194.2 H 855.9 V 189.2 H 868.8 V 191.4 H 885.5 V 191.6 H 902.3 V 190.5 H 922.6 V 186.7 H 935.9 V 183.6 H 953.6 V 179.6 H 965.0 V 179.6"/><g data-series-label="measured"><text class="end-label measured" x="985" y="204.5">Measured $93</text><text class="fan-value" x="985" y="221.5">$118–195</text></g></g><path class="price-line" data-series="price" d="M 49.3,220.0 L 54.5,218.7 L 60.5,220.8 L 66.3,218.9 L 71.4,219.6 L 77.5,216.4 L 83.0,219.1 L 88.7,216.6 L 94.5,215.2 L 99.8,214.1 L 105.7,211.4 L 111.4,214.0 L 116.6,210.9 L 122.3,212.3 L 127.8,211.4 L 133.4,211.1 L 139.1,211.7 L 144.8,214.5 L 150.1,211.2 L 156.0,213.3 L 161.7,211.8 L 166.9,212.7 L 173.0,211.4 L 178.5,215.2 L 183.7,211.0 L 189.6,211.5 L 195.1,211.6 L 200.5,210.5 L 206.4,209.7 L 212.1,211.1 L 217.8,210.5 L 223.3,211.7 L 228.9,209.7 L 234.6,208.4 L 240.3,210.7 L 245.6,215.8 L 251.3,216.3 L 257.1,213.5 L 262.4,215.0 L 268.3,215.2 L 273.8,216.5 L 279.2,215.8 L 285.3,214.5 L 290.8,215.3 L 296.5,218.2 L 302.0,215.6 L 307.6,214.6 L 313.5,212.6 L 318.6,210.4 L 324.4,210.3 L 329.5,207.8 L 335.6,204.8 L 341.1,205.1 L 346.8,204.4 L 352.6,203.0 L 357.9,200.8 L 363.8,199.7 L 369.3,195.6 L 374.7,195.7 L 380.8,192.7 L 385.9,193.2 L 391.3,193.0 L 397.2,197.9 L 402.9,195.3 L 408.2,196.0 L 414.1,191.5 L 419.9,192.2 L 425.0,190.5 L 431.1,200.0 L 436.6,195.0 L 442.3,199.5 L 448.1,195.4 L 453.2,190.1 L 458.6,187.5 L 464.5,183.3 L 470.2,188.3 L 475.3,181.2 L 481.4,182.2 L 487.0,185.1 L 492.7,180.5 L 498.4,180.6 L 503.7,174.8 L 509.6,174.2 L 515.3,176.3 L 520.5,185.1 L 526.4,196.1 L 531.9,186.7 L 537.3,180.5 L 543.2,182.4 L 548.9,179.3 L 554.6,173.4 L 560.1,174.5 L 565.7,175.4 L 571.4,159.4 L 577.1,157.5 L 582.5,163.5 L 587.6,159.8 L 593.7,152.1 L 599.2,146.4 L 604.4,146.3 L 610.5,147.5 L 616.0,143.2 L 621.9,145.6 L 627.4,155.0 L 632.8,148.4 L 638.7,145.2 L 644.4,136.8 L 650.1,145.0 L 655.3,150.5 L 661.0,147.8 L 666.3,153.3 L 672.2,157.0 L 677.8,166.2 L 683.1,155.4 L 689.2,158.1 L 694.7,163.4 L 700.4,150.6 L 706.0,140.5 L 711.5,142.6 L 717.4,138.5 L 722.6,141.2 L 728.3,138.2 L 733.4,144.0 L 739.5,138.4 L 745.1,125.1 L 750.8,127.7 L 756.5,127.0 L 761.8,136.3 L 767.7,141.8 L 773.3,130.4 L 778.6,122.7 L 784.7,125.0 L 790.0,110.7 L 795.2,108.5 L 801.3,115.0 L 807.0,119.0 L 812.2,121.3 L 818.3,116.0 L 823.8,117.9 L 829.5,117.3 L 835.2,108.2 L 840.6,99.4 L 846.5,110.6 L 852.2,107.2 L 857.3,103.5 L 863.0,117.0 L 868.6,119.0 L 874.1,111.8 L 879.8,110.0 L 885.5,107.0 L 890.9,107.0 L 896.8,104.5 L 902.5,93.3 L 907.7,96.7 L 913.7,90.8 L 919.3,76.1 L 924.4,64.0 L 930.3,83.7 L 935.9,67.0 L 941.2,74.6 L 947.1,61.9 L 952.8,62.0 L 958.5,67.2 L 964.1,57.3 L 965.0,54.0"/><text class="end-label price" x="985" y="39.5">Цена $252</text><text class="axis" x="105.9" y="277" text-anchor="middle">2014</text><text class="axis" x="173.2" y="277" text-anchor="middle">2015</text><text class="axis" x="240.5" y="277" text-anchor="middle">2016</text><text class="axis" x="307.9" y="277" text-anchor="middle">2017</text><text class="axis" x="375.2" y="277" text-anchor="middle">2018</text><text class="axis" x="442.5" y="277" text-anchor="middle">2019</text><text class="axis" x="509.8" y="277" text-anchor="middle">2020</text><text class="axis" x="577.3" y="277" text-anchor="middle">2021</text><text class="axis" x="644.6" y="277" text-anchor="middle">2022</text><text class="axis" x="711.9" y="277" text-anchor="middle">2023</text><text class="axis" x="779.2" y="277" text-anchor="middle">2024</text><text class="axis" x="846.6" y="277" text-anchor="middle">2025</text><text class="axis" x="913.9" y="277" text-anchor="middle">2026</text></svg><script type="application/json" data-price-chart-payload>{"series":{"industry":[["2019-02-21",60.19],["2019-05-02",61.96],["2019-08-02",63.67],["2019-11-01",67.45],["2020-02-20",66.31],["2020-05-05",65.88],["2020-08-04",55.16],["2020-10-29",51.76],["2021-02-18",47.92],["2021-05-04",52.75],["2021-08-03",55.73],["2021-11-02",62.85],["2022-02-22",87.41],["2022-05-03",95.7],["2022-08-02",100.77],["2022-11-01",103.2],["2023-02-21",105.69],["2023-05-02",114.84],["2023-08-01",130.03],["2023-10-31",70.89],["2024-02-22",69.91],["2024-05-02",71.18],["2024-08-01",82.62],["2024-10-31",80.82],["2025-02-20",88.42],["2025-05-01",83.98],["2025-07-31",81.65],["2025-10-30",83.33],["2026-02-17",86.88],["2026-04-30",92.59],["2026-08-04",98.71],["2026-10-05",98.71]],"measured":[["2013-02-21",29.25],["2013-05-02",31.81],["2013-08-07",32.36],["2013-11-04",34.79],["2014-02-26",33.99],["2014-05-06",35.16],["2014-08-06",33.81],["2014-11-06",34.62],["2015-02-24",39.79],["2015-05-01",39.47],["2015-08-05",38.44],["2015-11-05",35.73],["2016-02-25",36.26],["2016-05-04",34.21],["2016-08-04",34.22],["2016-11-03",33.5],["2017-02-23",31.25],["2017-05-08",30.43],["2017-08-02",30.66],["2017-11-02",32.53],["2018-02-22",35.03],["2018-05-03",37.37],["2018-08-02",47.95],["2018-11-02",51.06],["2019-02-21",52.35],["2019-05-02",54.22],["2019-08-02",56.97],["2019-11-01",59.9],["2020-02-20",58.37],["2020-05-05",59.19],["2020-08-04",52.07],["2020-10-29",49.11],["2021-02-18",46.02],["2021-05-04",50.77],["2021-08-03",52.47],["2021-11-02",58.74],["2022-02-22",76.71],["2022-05-03",82.99],["2022-08-02",86.87],["2022-11-01",89.81],["2023-02-21",88.15],["2023-05-02",94.73],["2023-08-01",106.06],["2023-10-31",65.32],["2024-02-22",62.78],["2024-05-02",64.54],["2024-08-01",74.68],["2024-10-31",74.49],["2025-02-20",80.79],["2025-05-01",77.98],["2025-07-31",77.73],["2025-10-30",79.08],["2026-02-17",83.95],["2026-04-30",87.9],["2026-08-04",92.91],["2026-10-05",92.91]],"price":[["2013-02-28",41.83],["2013-03-28",43.36],["2013-04-30",40.71],["2013-05-31",43.15],["2013-06-28",42.3],["2013-07-31",46.28],["2013-08-30",42.92],["2013-09-30",46.02],["2013-10-31",47.83],["2013-11-29",49.22],["2013-12-31",52.67],["2014-01-31",49.42],["2014-02-28",53.24],["2014-03-31",51.49],["2014-04-30",52.72],["2014-05-30",53.08],["2014-06-30",52.28],["2014-07-31",48.69],["2014-08-29",52.94],["2014-09-30",50.21],["2014-10-31",52.15],["2014-11-28",50.96],["2014-12-31",52.63],["2015-01-30",47.9],["2015-02-27",53.14],["2015-03-31",52.54],["2015-04-30",52.42],["2015-05-29",53.76],["2015-06-30",54.78],["2015-07-31",53.05],["2015-08-31",53.82],["2015-09-30",52.32],["2015-10-30",54.82],["2015-11-30",56.46],["2015-12-31",53.59],["2016-01-29",47.05],["2016-02-29",46.41],["2016-03-31",49.98],["2016-04-29",48.09],["2016-05-31",47.82],["2016-06-30",46.23],["2016-07-29",47.03],["2016-08-31",48.75],["2016-09-30",47.78],["2016-10-31",44.1],["2016-11-30",47.35],["2016-12-30",48.6],["2017-01-31",51.1],["2017-02-28",53.97],["2017-03-31",54.08],["2017-04-28",57.2],["2017-05-31",61.02],["2017-06-30",60.57],["2017-07-31",61.58],["2017-08-31",63.25],["2017-09-29",66.04],["2017-10-31",67.49],["2017-11-30",72.69],["2017-12-29",72.47],["2018-01-31",76.3],["2018-02-28",75.74],["2018-03-29",75.97],["2018-04-30",69.8],["2018-05-31",73.03],["2018-06-29",72.16],["2018-07-31",77.8],["2018-08-31",76.96],["2018-09-28",79.12],["2018-10-31",67.08],["2018-11-30",73.43],["2018-12-31",67.7],["2019-01-31",72.9],["2019-02-28",79.58],["2019-03-29",82.97],["2019-04-30",88.17],["2019-05-31",81.89],["2019-06-28",90.84],["2019-07-31",89.61],["2019-08-30",85.93],["2019-09-30",91.82],["2019-10-31",91.65],["2019-11-29",99.01],["2019-12-31",99.74],["2020-01-31",97.15],["2020-02-28",86.0],["2020-03-31",72.02],["2020-04-30",83.87],["2020-05-29",91.71],["2020-06-30",89.37],["2020-07-31",93.25],["2020-08-31",100.7],["2020-09-30",99.4],["2020-10-30",98.2],["2020-11-30",118.53],["2020-12-31",120.94],["2021-01-29",113.26],["2021-02-26",117.97],["2021-03-31",127.73],["2021-04-30",134.93],["2021-05-28",135.1],["2021-06-30",133.5],["2021-07-30",139.05],["2021-08-31",135.97],["2021-09-30",124.01],["2021-10-29",132.4],["2021-11-30",136.5],["2021-12-31",147.04],["2022-01-31",136.77],["2022-02-28",129.79],["2022-03-31",133.18],["2022-04-29",126.26],["2022-05-31",121.47],["2022-06-30",109.89],["2022-07-29",123.5],["2022-08-31",120.16],["2022-09-30",113.41],["2022-10-31",129.66],["2022-11-30",142.42],["2022-12-30",139.72],["2023-01-31",144.92],["2023-02-28",141.56],["2023-03-31",145.33],["2023-04-28",137.93],["2023-05-31",145.07],["2023-06-30",161.88],["2023-07-31",158.6],["2023-08-31",159.51],["2023-09-29",147.76],["2023-10-31",140.77],["2023-11-30",155.23],["2023-12-29",164.89],["2024-01-31",162.05],["2024-02-29",180.18],["2024-03-28",182.9],["2024-04-30",174.66],["2024-05-31",169.58],["2024-06-28",166.71],["2024-07-31",173.48],["2024-08-30",171.05],["2024-09-30",171.71],["2024-10-31",183.34],["2024-11-29",194.38],["2024-12-31",180.26],["2025-01-31",184.56],["2025-02-28",189.3],["2025-03-31",172.14],["2025-04-30",169.58],["2025-05-30",178.74],["2025-06-30",180.96],["2025-07-31",184.85],["2025-08-29",184.8],["2025-09-30",188.0],["2025-10-31",202.11],["2025-11-28",197.89],["2025-12-31",205.31],["2026-01-30",223.98],["2026-02-27",239.22],["2026-03-31",214.36],["2026-04-30",235.5],["2026-05-29",225.85],["2026-06-30",241.94],["2026-07-31",241.71],["2026-08-31",235.17],["2026-09-30",247.73],["2026-10-05",251.92]]},"bands":{"industry":[["2019-02-21",null,null],["2019-05-02",null,null],["2019-08-02",null,null],["2019-11-01",null,null],["2020-02-20",null,null],["2020-05-05",null,null],["2020-08-04",null,null],["2020-10-29",null,null],["2021-02-18",null,null],["2021-05-04",null,null],["2021-08-03",null,null],["2021-11-02",null,null],["2022-02-22",null,null],["2022-05-03",null,null],["2022-08-02",null,null],["2022-11-01",null,null],["2023-02-21",null,null],["2023-05-02",null,null],["2023-08-01",null,null],["2023-10-31",null,null],["2024-02-22",null,null],["2024-05-02",null,null],["2024-08-01",null,null],["2024-10-31",null,null],["2025-02-20",null,null],["2025-05-01",null,null],["2025-07-31",null,null],["2025-10-30",null,null],["2026-02-17",null,null],["2026-04-30",null,null],["2026-08-04",null,null],["2026-10-05",null,null]],"measured":[["2013-02-21",37.13,61.27],["2013-05-02",40.38,66.63],["2013-08-07",41.08,67.78],["2013-11-04",44.17,72.87],["2014-02-26",43.15,71.2],["2014-05-06",44.64,73.65],["2014-08-06",42.92,70.82],["2014-11-06",43.95,72.52],["2015-02-24",50.51,83.34],["2015-05-01",50.11,82.67],["2015-08-05",48.8,80.52],["2015-11-05",45.36,74.84],["2016-02-25",46.03,75.95],["2016-05-04",43.43,71.66],["2016-08-04",43.44,71.68],["2016-11-03",42.53,70.17],["2017-02-23",39.67,65.46],["2017-05-08",38.63,63.74],["2017-08-02",38.92,64.22],["2017-11-02",41.3,68.14],["2018-02-22",44.47,73.37],["2018-05-03",47.44,78.28],["2018-08-02",60.87,100.44],["2018-11-02",64.82,106.95],["2019-02-21",66.46,109.65],["2019-05-02",68.83,113.57],["2019-08-02",72.32,119.33],["2019-11-01",76.04,125.47],["2020-02-20",74.1,122.26],["2020-05-05",75.14,123.98],["2020-08-04",66.1,109.07],["2020-10-29",62.34,102.87],["2021-02-18",58.42,96.39],["2021-05-04",64.45,106.34],["2021-08-03",66.61,109.9],["2021-11-02",74.57,123.04],["2022-02-22",97.38,160.68],["2022-05-03",105.35,173.83],["2022-08-02",110.28,181.96],["2022-11-01",114.01,188.12],["2023-02-21",111.91,184.64],["2023-05-02",120.26,198.42],["2023-08-01",134.64,222.15],["2023-10-31",82.92,136.82],["2024-02-22",79.7,131.5],["2024-05-02",81.93,135.19],["2024-08-01",94.81,156.43],["2024-10-31",94.56,156.03],["2025-02-20",102.56,169.22],["2025-05-01",98.99,163.34],["2025-07-31",98.68,162.81],["2025-10-30",100.39,165.64],["2026-02-17",106.57,175.84],["2026-04-30",111.59,184.12],["2026-08-04",117.95,194.61],["2026-10-05",117.95,194.61]]},"observationEnds":{"industry":"2026-08-04","measured":"2026-08-04"}}</script></div>
+<div class="chart-foot"><span>Полоса: медиана ±1σ отклонения цены от DCF; у Industry полосы нет — слабое совпадение · линия: DCF · цена: чёрная линия</span><button class="inline-note no-print" data-dialog="range-method">Как читать диапазон</button><span class="print-only">Собственная норма ±1σ, не вероятности</span></div></section>
+<div class="two-up revenue-panels"><section class="revenue-annual"><header><h2>Выручка LTM · 15 лет</h2><p><strong>$7.60 млрд</strong><em>+9.5% г/г</em></p><small>LTM на 30 июня каждого года · USD млрд</small></header><div class="revenue-chart-group"><svg class="revenue-chart revenue-print-chart" viewBox="0 0 680 290" role="img" aria-label="Выручка и темпы роста"><g font-family="IBM Plex Sans, Segoe UI, sans-serif"><line x1="62" y1="96.0" x2="664" y2="96.0" class="grid"/><text x="54" y="100.0" class="axis" text-anchor="end">0</text><line x1="62" y1="61.0" x2="664" y2="61.0" class="grid"/><text x="54" y="65.0" class="axis" text-anchor="end">4</text><line x1="62" y1="26.0" x2="664" y2="26.0" class="grid"/><text x="54" y="30.0" class="axis" text-anchor="end">9</text><rect class="bar" x="69.6" y="71.2" width="24.9" height="24.8"><title>2012: $3.10 млрд</title></rect><text x="82.1" y="115" class="axis" text-anchor="middle">2012</text><rect class="bar" x="109.8" y="68.8" width="24.9" height="27.2"><title>2013: $3.39 млрд</title></rect><text x="122.2" y="115" class="axis" text-anchor="middle">2013</text><rect class="bar" x="149.9" y="66.5" width="24.9" height="29.5"><title>2014: $3.69 млрд</title></rect><text x="162.3" y="115" class="axis" text-anchor="middle">2014</text><rect class="bar" x="190.0" y="63.7" width="24.9" height="32.3"><title>2015: $4.03 млрд</title></rect><text x="202.5" y="115" class="axis" text-anchor="middle">2015</text><rect class="bar" x="230.2" y="64.5" width="24.9" height="31.5"><title>2016: $3.94 млрд</title></rect><text x="242.6" y="115" class="axis" text-anchor="middle">2016</text><rect class="bar" x="270.3" y="64.7" width="24.9" height="31.3"><title>2017: $3.90 млрд</title></rect><text x="282.7" y="115" class="axis" text-anchor="middle">2017</text><rect class="bar" x="310.4" y="60.2" width="24.9" height="35.8"><title>2018: $4.46 млрд</title></rect><text x="322.9" y="115" class="axis" text-anchor="middle">2018</text><rect class="bar" x="350.6" y="56.3" width="24.9" height="39.7"><title>2019: $4.96 млрд</title></rect><text x="363.0" y="115" class="axis" text-anchor="middle">2019</text><rect class="bar" x="390.7" y="55.4" width="24.9" height="40.6"><title>2020: $5.07 млрд</title></rect><text x="403.1" y="115" class="axis" text-anchor="middle">2020</text><rect class="bar" x="430.8" y="59.5" width="24.9" height="36.5"><title>2021: $4.55 млрд</title></rect><text x="443.3" y="115" class="axis" text-anchor="middle">2021</text><rect class="bar" x="471.0" y="49.6" width="24.9" height="46.4"><title>2022: $5.79 млрд</title></rect><text x="483.4" y="115" class="axis" text-anchor="middle">2022</text><rect class="bar" x="511.1" y="45.6" width="24.9" height="50.4"><title>2023: $6.29 млрд</title></rect><text x="523.5" y="115" class="axis" text-anchor="middle">2023</text><rect class="bar" x="551.2" y="42.0" width="24.9" height="54.0"><title>2024: $6.74 млрд</title></rect><text x="563.7" y="115" class="axis" text-anchor="middle">2024</text><rect class="bar" x="591.4" y="40.4" width="24.9" height="55.6"><title>2025: $6.94 млрд</title></rect><text x="603.8" y="115" class="axis" text-anchor="middle">2025</text><rect class="bar current" x="631.5" y="35.1" width="24.9" height="60.9"><title>2026: $7.60 млрд</title></rect><text x="643.9" y="115" class="axis" text-anchor="middle">2026</text><text x="62" y="136" class="axis growth-title">Темп год к году</text><line x1="62" y1="240.6" x2="664" y2="240.6" class="zero"/><text x="54" y="272.0" class="axis" text-anchor="end">-10%</text><text x="54" y="172.0" class="axis" text-anchor="end">27%</text><circle cx="122.2" cy="215.5" r="2.4" class="growth-dot"><title>+9.4%</title></circle><circle cx="162.3" cy="217.2" r="2.4" class="growth-dot"><title>+8.8%</title></circle><circle cx="202.5" cy="215.6" r="2.4" class="growth-dot"><title>+9.3%</title></circle><circle cx="242.6" cy="247.0" r="2.4" class="growth-dot"><title>-2.4%</title></circle><circle cx="282.7" cy="242.8" r="2.4" class="growth-dot"><title>-0.8%</title></circle><circle cx="322.9" cy="202.1" r="2.4" class="growth-dot"><title>+14.4%</title></circle><circle cx="363.0" cy="210.9" r="2.4" class="growth-dot"><title>+11.1%</title></circle><circle cx="403.1" cy="234.6" r="2.4" class="growth-dot"><title>+2.3%</title></circle><circle cx="443.3" cy="268.0" r="2.4" class="growth-dot"><title>-10.2%</title></circle><circle cx="483.4" cy="168.0" r="2.4" class="growth-dot"><title>+27.1%</title></circle><circle cx="523.5" cy="217.5" r="2.4" class="growth-dot"><title>+8.6%</title></circle><circle cx="563.7" cy="221.6" r="2.4" class="growth-dot"><title>+7.1%</title></circle><circle cx="603.8" cy="232.6" r="2.4" class="growth-dot"><title>+3.0%</title></circle><circle cx="643.9" cy="215.1" r="2.4" class="growth-dot"><title>+9.5%</title></circle><path d="M 122.2,215.5 L 162.3,217.2 L 202.5,215.6 L 242.6,247.0 L 282.7,242.8 L 322.9,202.1 L 363.0,210.9 L 403.1,234.6 L 443.3,268.0 L 483.4,168.0 L 523.5,217.5 L 563.7,221.6 L 603.8,232.6 L 643.9,215.1" class="growth-line"/><text x="122.2" y="233.5" text-anchor="middle" class="growth-label">+9%</text><text x="162.3" y="207.2" text-anchor="middle" class="growth-label">+9%</text><text x="202.5" y="233.6" text-anchor="middle" class="growth-label">+9%</text><text x="242.6" y="237.0" text-anchor="middle" class="growth-label">-2%</text><text x="282.7" y="260.8" text-anchor="middle" class="growth-label">-1%</text><text x="322.9" y="192.1" text-anchor="middle" class="growth-label">+14%</text><text x="363.0" y="228.9" text-anchor="middle" class="growth-label">+11%</text><text x="403.1" y="252.6" text-anchor="middle" class="growth-label">+2%</text><text x="443.3" y="284.0" text-anchor="middle" class="growth-label">-10%</text><text x="483.4" y="158.0" text-anchor="middle" class="growth-label">+27%</text><text x="523.5" y="235.5" text-anchor="middle" class="growth-label">+9%</text><text x="563.7" y="211.6" text-anchor="middle" class="growth-label">+7%</text><text x="603.8" y="250.6" text-anchor="middle" class="growth-label">+3%</text><text x="641.0" y="205.1" text-anchor="middle" class="growth-label">+10%</text></g></svg><figure class="revenue-bars-figure"><svg class="revenue-bars-svg" data-frequency="annual" viewBox="0 0 680 325" role="img" aria-label="Выручка, USD млрд"><g><line class="grid" x1="76" x2="656" y1="270.0" y2="270.0"/><text class="axis" x="66" y="276.0" text-anchor="end">0</text><line class="grid" x1="76" x2="656" y1="151.0" y2="151.0"/><text class="axis" x="66" y="157.0" text-anchor="end">4</text><line class="grid" x1="76" x2="656" y1="32.0" y2="32.0"/><text class="axis" x="66" y="38.0" text-anchor="end">9</text><rect class="bar" data-period="2012" data-value="3.099" x="83.3" y="185.6" width="24.0" height="84.4"><title>2012: $3.10 млрд</title></rect><text class="axis" x="95.3" y="302" text-anchor="middle">2012</text><rect class="bar" data-period="2013" data-value="3.39" x="122.0" y="177.7" width="24.0" height="92.3"><title>2013: $3.39 млрд</title></rect><rect class="bar" data-period="2014" data-value="3.687" x="160.7" y="169.6" width="24.0" height="100.4"><title>2014: $3.69 млрд</title></rect><text class="axis" x="172.7" y="302" text-anchor="middle">2014</text><rect class="bar" data-period="2015" data-value="4.031" x="199.3" y="160.2" width="24.0" height="109.8"><title>2015: $4.03 млрд</title></rect><rect class="bar" data-period="2016" data-value="3.935" x="238.0" y="162.8" width="24.0" height="107.2"><title>2016: $3.94 млрд</title></rect><text class="axis" x="250.0" y="302" text-anchor="middle">2016</text><rect class="bar" data-period="2017" data-value="3.903" x="276.7" y="163.7" width="24.0" height="106.3"><title>2017: $3.90 млрд</title></rect><rect class="bar" data-period="2018" data-value="4.465" x="315.3" y="148.4" width="24.0" height="121.6"><title>2018: $4.46 млрд</title></rect><text class="axis" x="327.3" y="302" text-anchor="middle">2018</text><rect class="bar" data-period="2019" data-value="4.961" x="354.0" y="134.9" width="24.0" height="135.1"><title>2019: $4.96 млрд</title></rect><rect class="bar" data-period="2020" data-value="5.073" x="392.7" y="131.8" width="24.0" height="138.2"><title>2020: $5.07 млрд</title></rect><text class="axis" x="404.7" y="302" text-anchor="middle">2020</text><rect class="bar" data-period="2021" data-value="4.554" x="431.3" y="146.0" width="24.0" height="124.0"><title>2021: $4.55 млрд</title></rect><rect class="bar" data-period="2022" data-value="5.789" x="470.0" y="112.3" width="24.0" height="157.7"><title>2022: $5.79 млрд</title></rect><text class="axis" x="482.0" y="302" text-anchor="middle">2022</text><rect class="bar" data-period="2023" data-value="6.289" x="508.7" y="98.7" width="24.0" height="171.3"><title>2023: $6.29 млрд</title></rect><rect class="bar" data-period="2024" data-value="6.736" x="547.3" y="86.5" width="24.0" height="183.5"><title>2024: $6.74 млрд</title></rect><text class="axis" x="559.3" y="302" text-anchor="middle">2024</text><rect class="bar" data-period="2025" data-value="6.937" x="586.0" y="81.0" width="24.0" height="189.0"><title>2025: $6.94 млрд</title></rect><rect class="bar current" data-period="2026" data-value="7.598" x="624.7" y="63.0" width="24.0" height="207.0"><title>2026: $7.60 млрд</title></rect><text class="axis" x="636.7" y="302" text-anchor="middle">2026</text></g></svg></figure><figure class="revenue-growth-figure"><figcaption>Темп год к году</figcaption><svg class="revenue-growth-svg" data-frequency="annual" viewBox="0 0 680 290" role="img" aria-label="Изменение выручки год к году, проценты"><g><line class="grid" x1="76" x2="656" y1="247.0" y2="247.0"/><text class="axis" x="66" y="253.0" text-anchor="end">-10%</text><line class="zero" x1="76" x2="656" y1="188.9" y2="188.9"/><text class="axis" x="66" y="194.9" text-anchor="end">0%</text><line class="grid" x1="76" x2="656" y1="35.0" y2="35.0"/><text class="axis" x="66" y="41.0" text-anchor="end">27%</text><path class="growth-line" d="M 134.0,135.6 L 172.7,139.2 L 211.3,136.0 L 250.0,202.4 L 288.7,193.5 L 327.3,107.2 L 366.0,125.9 L 404.7,176.1 L 443.3,247.0 L 482.0,35.0 L 520.7,139.9 L 559.3,148.6 L 598.0,172.0 L 636.7,134.8"/><text class="axis" x="95.3" y="282" text-anchor="middle">2012</text><g class="growth-point" data-period="2013" data-rate="9.390125847047436"><title>2013: +9.4%</title><circle class="growth-dot" cx="134.0" cy="135.6" r="4"/></g><g class="growth-point" data-period="2014" data-rate="8.761061946902649"><title>2014: +8.8%</title><circle class="growth-dot" cx="172.7" cy="139.2" r="4"/><text class="growth-label" x="172.7" y="126.2" text-anchor="middle">+9%</text></g><text class="axis" x="172.7" y="282" text-anchor="middle">2014</text><g class="growth-point" data-period="2015" data-rate="9.330078654732832"><title>2015: +9.3%</title><circle class="growth-dot" cx="211.3" cy="136.0" r="4"/></g><g class="growth-point" data-period="2016" data-rate="-2.381543041428913"><title>2016: -2.4%</title><circle class="growth-dot" cx="250.0" cy="202.4" r="4"/><text class="growth-label" x="250.0" y="189.4" text-anchor="middle">-2%</text></g><text class="axis" x="250.0" y="282" text-anchor="middle">2016</text><g class="growth-point" data-period="2017" data-rate="-0.8132147395171541"><title>2017: -0.8%</title><circle class="growth-dot" cx="288.7" cy="193.5" r="4"/></g><g class="growth-point" data-period="2018" data-rate="14.399180117858057"><title>2018: +14.4%</title><circle class="growth-dot" cx="327.3" cy="107.2" r="4"/><text class="growth-label" x="327.3" y="94.2" text-anchor="middle">+14%</text></g><text class="axis" x="327.3" y="282" text-anchor="middle">2018</text><g class="growth-point" data-period="2019" data-rate="11.108622620380748"><title>2019: +11.1%</title><circle class="growth-dot" cx="366.0" cy="125.9" r="4"/></g><g class="growth-point" data-period="2020" data-rate="2.2576093529530272"><title>2020: +2.3%</title><circle class="growth-dot" cx="404.7" cy="176.1" r="4"/><text class="growth-label" x="404.7" y="163.1" text-anchor="middle">+2%</text></g><text class="axis" x="404.7" y="282" text-anchor="middle">2020</text><g class="growth-point" data-period="2021" data-rate="-10.23063276167948"><title>2021: -10.2%</title><circle class="growth-dot" cx="443.3" cy="247.0" r="4"/></g><g class="growth-point" data-period="2022" data-rate="27.11901624945101"><title>2022: +27.1%</title><circle class="growth-dot" cx="482.0" cy="35.0" r="4"/><text class="growth-label" x="482.0" y="22.0" text-anchor="middle">+27%</text></g><text class="axis" x="482.0" y="282" text-anchor="middle">2022</text><g class="growth-point" data-period="2023" data-rate="8.637070305752292"><title>2023: +8.6%</title><circle class="growth-dot" cx="520.7" cy="139.9" r="4"/></g><g class="growth-point" data-period="2024" data-rate="7.107648274765466"><title>2024: +7.1%</title><circle class="growth-dot" cx="559.3" cy="148.6" r="4"/><text class="growth-label" x="559.3" y="135.6" text-anchor="middle">+7%</text></g><text class="axis" x="559.3" y="282" text-anchor="middle">2024</text><g class="growth-point" data-period="2025" data-rate="2.9839667458432473"><title>2025: +3.0%</title><circle class="growth-dot" cx="598.0" cy="172.0" r="4"/></g><g class="growth-point" data-period="2026" data-rate="9.528614674931513"><title>2026: +9.5%</title><circle class="growth-dot" cx="636.7" cy="134.8" r="4"/><text class="growth-label" x="636.7" y="121.8" text-anchor="middle">+10%</text></g><text class="axis" x="636.7" y="282" text-anchor="middle">2026</text></g></svg><details class="revenue-values" data-frequency="annual"><summary>Все периоды и значения</summary><table><thead><tr><th>Период</th><th>Выручка, $ млрд</th><th>Темп г/г</th></tr></thead><tbody><tr><th scope="row">2012</th><td>3.10</td><td>н/д</td></tr><tr><th scope="row">2013</th><td>3.39</td><td>+9.4%</td></tr><tr><th scope="row">2014</th><td>3.69</td><td>+8.8%</td></tr><tr><th scope="row">2015</th><td>4.03</td><td>+9.3%</td></tr><tr><th scope="row">2016</th><td>3.94</td><td>-2.4%</td></tr><tr><th scope="row">2017</th><td>3.90</td><td>-0.8%</td></tr><tr><th scope="row">2018</th><td>4.46</td><td>+14.4%</td></tr><tr><th scope="row">2019</th><td>4.96</td><td>+11.1%</td></tr><tr><th scope="row">2020</th><td>5.07</td><td>+2.3%</td></tr><tr><th scope="row">2021</th><td>4.55</td><td>-10.2%</td></tr><tr><th scope="row">2022</th><td>5.79</td><td>+27.1%</td></tr><tr><th scope="row">2023</th><td>6.29</td><td>+8.6%</td></tr><tr><th scope="row">2024</th><td>6.74</td><td>+7.1%</td></tr><tr><th scope="row">2025</th><td>6.94</td><td>+3.0%</td></tr><tr><th scope="row">2026</th><td>7.60</td><td>+9.5%</td></tr></tbody></table></details></figure></div></section>
+<section class="revenue-quarterly"><header><h2>Квартальная выручка · 5 лет</h2><div class="growth-head" style="flex-wrap:wrap"><p><strong>$2.04 млрд</strong><em>+15.0% г/г</em></p><small>финансовые кварталы, ФГ до 31 дек · Q4 = ФГ − (Q1+Q2+Q3)</small></div><div class="revenue-print-pulse"><div class="growth-pulse"><span><small>Q3&#x27;25</small><strong>+10.8%</strong></span><span><small>Q4&#x27;25</small><strong>+13.4%</strong></span><span><small>Q1&#x27;26</small><strong>+11.3%</strong></span><span><small>Q2&#x27;26</small><strong>+15.0%</strong></span></div></div></header><div class="revenue-chart-group"><svg class="revenue-chart revenue-print-chart" viewBox="0 0 680 290" role="img" aria-label="Выручка и темпы роста"><g font-family="IBM Plex Sans, Segoe UI, sans-serif"><line x1="62" y1="96.0" x2="664" y2="96.0" class="grid"/><text x="54" y="100.0" class="axis" text-anchor="end">0.0</text><line x1="62" y1="61.0" x2="664" y2="61.0" class="grid"/><text x="54" y="65.0" class="axis" text-anchor="end">1.2</text><line x1="62" y1="26.0" x2="664" y2="26.0" class="grid"/><text x="54" y="30.0" class="axis" text-anchor="end">2.4</text><rect class="bar" x="67.7" y="53.1" width="18.7" height="42.9"><title>Q3&#x27;21: $1.44 млрд</title></rect><text x="77.0" y="115" class="axis" text-anchor="middle">Q3&#x27;21</text><rect class="bar" x="97.8" y="51.2" width="18.7" height="44.8"><title>Q4&#x27;21: $1.50 млрд</title></rect><rect class="bar" x="127.9" y="52.6" width="18.7" height="43.4"><title>Q1&#x27;22: $1.46 млрд</title></rect><rect class="bar" x="158.0" y="50.9" width="18.7" height="45.1"><title>Q2&#x27;22: $1.51 млрд</title></rect><rect class="bar" x="188.1" y="49.8" width="18.7" height="46.2"><title>Q3&#x27;22: $1.55 млрд</title></rect><text x="197.5" y="115" class="axis" text-anchor="middle">Q3&#x27;22</text><rect class="bar" x="218.2" y="47.6" width="18.7" height="48.4"><title>Q4&#x27;22: $1.63 млрд</title></rect><rect class="bar" x="248.3" y="48.4" width="18.7" height="47.6"><title>Q1&#x27;23: $1.60 млрд</title></rect><rect class="bar" x="278.4" y="47.0" width="18.7" height="49.0"><title>Q2&#x27;23: $1.65 млрд</title></rect><rect class="bar" x="308.5" y="47.7" width="18.7" height="48.3"><title>Q3&#x27;23: $1.62 млрд</title></rect><text x="317.9" y="115" class="axis" text-anchor="middle">Q3&#x27;23</text><rect class="bar" x="338.6" y="44.5" width="18.7" height="51.5"><title>Q4&#x27;23: $1.73 млрд</title></rect><rect class="bar" x="368.7" y="44.3" width="18.7" height="51.7"><title>Q1&#x27;24: $1.74 млрд</title></rect><rect class="bar" x="398.8" y="44.3" width="18.7" height="51.7"><title>Q2&#x27;24: $1.73 млрд</title></rect><rect class="bar" x="428.9" y="45.1" width="18.7" height="50.9"><title>Q3&#x27;24: $1.71 млрд</title></rect><text x="438.2" y="115" class="axis" text-anchor="middle">Q3&#x27;24</text><rect class="bar" x="459.0" y="43.6" width="18.7" height="52.4"><title>Q4&#x27;24: $1.76 млрд</title></rect><rect class="bar" x="489.1" y="44.4" width="18.7" height="51.6"><title>Q1&#x27;25: $1.73 млрд</title></rect><rect class="bar" x="519.2" y="43.1" width="18.7" height="52.9"><title>Q2&#x27;25: $1.78 млрд</title></rect><rect class="bar" x="549.3" y="39.6" width="18.7" height="56.4"><title>Q3&#x27;25: $1.89 млрд</title></rect><text x="558.7" y="115" class="axis" text-anchor="middle">Q3&#x27;25</text><rect class="bar" x="579.4" y="36.5" width="18.7" height="59.5"><title>Q4&#x27;25: $2.00 млрд</title></rect><rect class="bar" x="609.5" y="38.6" width="18.7" height="57.4"><title>Q1&#x27;26: $1.93 млрд</title></rect><rect class="bar current" x="639.6" y="35.1" width="18.7" height="60.9"><title>Q2&#x27;26: $2.04 млрд</title></rect><text x="649.0" y="115" class="axis" text-anchor="middle">Q2&#x27;26</text><g data-overlay="ebit-margin" aria-label="EBIT-маржа, %"><path d="M 77.0,43.2 L 107.2,41.9 L 137.2,41.4 L 167.4,41.7 L 197.5,40.1 L 227.6,40.8 L 257.6,38.7 L 287.8,38.7 L 317.9,35.1 L 347.9,38.1 L 378.1,41.9 L 408.2,37.8 L 438.2,37.2 L 468.4,36.0 L 498.5,36.7 L 528.5,37.4 L 558.7,37.8 L 588.8,39.0 L 618.9,35.8 L 649.0,37.8" style="fill:none;stroke:#28342e;stroke-width:1.4;stroke-linejoin:round"/><text x="77.0" y="38.2" text-anchor="middle" class="growth-label" style="fill:#28342e;stroke:#fff;stroke-width:2.5;paint-order:stroke;stroke-linejoin:round">23%</text><text x="197.5" y="35.1" text-anchor="middle" class="growth-label" style="fill:#28342e;stroke:#fff;stroke-width:2.5;paint-order:stroke;stroke-linejoin:round">25%</text><text x="317.9" y="30.1" text-anchor="middle" class="growth-label" style="fill:#28342e;stroke:#fff;stroke-width:2.5;paint-order:stroke;stroke-linejoin:round">27%</text><text x="438.2" y="32.2" text-anchor="middle" class="growth-label" style="fill:#28342e;stroke:#fff;stroke-width:2.5;paint-order:stroke;stroke-linejoin:round">26%</text><text x="558.7" y="32.8" text-anchor="middle" class="growth-label" style="fill:#28342e;stroke:#fff;stroke-width:2.5;paint-order:stroke;stroke-linejoin:round">26%</text><text x="649.0" y="32.8" text-anchor="middle" class="growth-label" style="fill:#28342e;stroke:#fff;stroke-width:2.5;paint-order:stroke;stroke-linejoin:round">26%</text><text x="664.0" y="14" text-anchor="end" class="axis" style="fill:#28342e">EBIT-маржа, %</text></g><text x="62" y="136" class="axis growth-title">Темп год к году</text><line x1="62" y1="266.4" x2="664" y2="266.4" class="zero"/><text x="54" y="272.0" class="axis" text-anchor="end">-0%</text><text x="54" y="172.0" class="axis" text-anchor="end">15%</text><circle cx="197.5" cy="215.7" r="2.4" class="growth-dot"><title>+7.7%</title></circle><circle cx="227.6" cy="213.1" r="2.4" class="growth-dot"><title>+8.1%</title></circle><circle cx="257.6" cy="204.0" r="2.4" class="growth-dot"><title>+9.5%</title></circle><circle cx="287.8" cy="209.3" r="2.4" class="growth-dot"><title>+8.7%</title></circle><circle cx="317.9" cy="236.3" r="2.4" class="growth-dot"><title>+4.6%</title></circle><circle cx="347.9" cy="223.9" r="2.4" class="growth-dot"><title>+6.5%</title></circle><circle cx="378.1" cy="209.2" r="2.4" class="growth-dot"><title>+8.7%</title></circle><circle cx="408.2" cy="231.0" r="2.4" class="growth-dot"><title>+5.4%</title></circle><circle cx="438.2" cy="231.7" r="2.4" class="growth-dot"><title>+5.3%</title></circle><circle cx="468.4" cy="254.7" r="2.4" class="growth-dot"><title>+1.8%</title></circle><circle cx="498.5" cy="268.0" r="2.4" class="growth-dot"><title>-0.2%</title></circle><circle cx="528.5" cy="250.0" r="2.4" class="growth-dot"><title>+2.5%</title></circle><circle cx="558.7" cy="195.6" r="2.4" class="growth-dot"><title>+10.8%</title></circle><circle cx="588.8" cy="178.1" r="2.4" class="growth-dot"><title>+13.4%</title></circle><circle cx="618.9" cy="191.9" r="2.4" class="growth-dot"><title>+11.3%</title></circle><circle cx="649.0" cy="168.0" r="2.4" class="growth-dot"><title>+15.0%</title></circle><path d="M 197.5,215.7 L 227.6,213.1 L 257.6,204.0 L 287.8,209.3 L 317.9,236.3 L 347.9,223.9 L 378.1,209.2 L 408.2,231.0 L 438.2,231.7 L 468.4,254.7 L 498.5,268.0 L 528.5,250.0 L 558.7,195.6 L 588.8,178.1 L 618.9,191.9 L 649.0,168.0" class="growth-line"/><text x="197.5" y="205.7" text-anchor="middle" class="growth-label">+8%</text><text x="227.6" y="231.1" text-anchor="middle" class="growth-label">+8%</text><text x="257.6" y="194.0" text-anchor="middle" class="growth-label">+10%</text><text x="287.8" y="227.3" text-anchor="middle" class="growth-label">+9%</text><text x="317.9" y="254.3" text-anchor="middle" class="growth-label">+5%</text><text x="347.9" y="213.9" text-anchor="middle" class="growth-label">+6%</text><text x="378.1" y="181.2" text-anchor="middle" class="growth-label">+9%</text><text x="408.2" y="249.0" text-anchor="middle" class="growth-label">+5%</text><text x="438.2" y="221.7" text-anchor="middle" class="growth-label">+5%</text><text x="468.4" y="272.7" text-anchor="middle" class="growth-label">+2%</text><text x="498.5" y="240.0" text-anchor="middle" class="growth-label">-0%</text><text x="528.5" y="268.0" text-anchor="middle" class="growth-label">+2%</text><text x="558.7" y="185.6" text-anchor="middle" class="growth-label">+11%</text><text x="588.8" y="214.1" text-anchor="middle" class="growth-label">+13%</text><text x="618.9" y="181.9" text-anchor="middle" class="growth-label">+11%</text><text x="641.0" y="158.0" text-anchor="middle" class="growth-label">+15%</text></g></svg><figure class="revenue-bars-figure"><svg class="revenue-bars-svg" data-frequency="quarterly" viewBox="0 0 680 325" role="img" aria-label="Выручка, USD млрд"><g><line class="grid" x1="76" x2="656" y1="270.0" y2="270.0"/><text class="axis" x="66" y="276.0" text-anchor="end">0.0</text><line class="grid" x1="76" x2="656" y1="151.0" y2="151.0"/><text class="axis" x="66" y="157.0" text-anchor="end">1.2</text><line class="grid" x1="76" x2="656" y1="32.0" y2="32.0"/><text class="axis" x="66" y="38.0" text-anchor="end">2.4</text><rect class="bar" data-period="Q3&#x27;21" data-value="1.440681" x="81.5" y="124.2" width="18.0" height="145.8"><title>Q3&#x27;21: $1.44 млрд</title></rect><text class="axis" x="90.5" y="302" text-anchor="middle">Q3&#x27;21</text><rect class="bar" data-period="Q4&#x27;21" data-value="1.503745" x="110.5" y="117.8" width="18.0" height="152.2"><title>Q4&#x27;21: $1.50 млрд</title></rect><rect class="bar" data-period="Q1&#x27;22" data-value="1.458525" x="139.5" y="122.4" width="18.0" height="147.6"><title>Q1&#x27;22: $1.46 млрд</title></rect><rect class="bar" data-period="Q2&#x27;22" data-value="1.514552" x="168.5" y="116.7" width="18.0" height="153.3"><title>Q2&#x27;22: $1.51 млрд</title></rect><rect class="bar" data-period="Q3&#x27;22" data-value="1.551786" x="197.5" y="112.9" width="18.0" height="157.1"><title>Q3&#x27;22: $1.55 млрд</title></rect><text class="axis" x="206.5" y="302" text-anchor="middle">Q3&#x27;22</text><rect class="bar" data-period="Q4&#x27;22" data-value="1.625667" x="226.5" y="105.4" width="18.0" height="164.6"><title>Q4&#x27;22: $1.63 млрд</title></rect><rect class="bar" data-period="Q1&#x27;23" data-value="1.597117" x="255.5" y="108.3" width="18.0" height="161.7"><title>Q1&#x27;23: $1.60 млрд</title></rect><rect class="bar" data-period="Q2&#x27;23" data-value="1.646111" x="284.5" y="103.4" width="18.0" height="166.6"><title>Q2&#x27;23: $1.65 млрд</title></rect><rect class="bar" data-period="Q3&#x27;23" data-value="1.622837" x="313.5" y="105.7" width="18.0" height="164.3"><title>Q3&#x27;23: $1.62 млрд</title></rect><text class="axis" x="322.5" y="302" text-anchor="middle">Q3&#x27;23</text><rect class="bar" data-period="Q4&#x27;23" data-value="1.730885" x="342.5" y="94.8" width="18.0" height="175.2"><title>Q4&#x27;23: $1.73 млрд</title></rect><rect class="bar" data-period="Q1&#x27;24" data-value="1.73618" x="371.5" y="94.2" width="18.0" height="175.8"><title>Q1&#x27;24: $1.74 млрд</title></rect><rect class="bar" data-period="Q2&#x27;24" data-value="1.734834" x="400.5" y="94.4" width="18.0" height="175.6"><title>Q2&#x27;24: $1.73 млрд</title></rect><rect class="bar" data-period="Q3&#x27;24" data-value="1.708564" x="429.5" y="97.0" width="18.0" height="173.0"><title>Q3&#x27;24: $1.71 млрд</title></rect><text class="axis" x="438.5" y="302" text-anchor="middle">Q3&#x27;24</text><rect class="bar" data-period="Q4&#x27;24" data-value="1.761602" x="458.5" y="91.7" width="18.0" height="178.3"><title>Q4&#x27;24: $1.76 млрд</title></rect><rect class="bar" data-period="Q1&#x27;25" data-value="1.731971" x="487.5" y="94.7" width="18.0" height="175.3"><title>Q1&#x27;25: $1.73 млрд</title></rect><rect class="bar" data-period="Q2&#x27;25" data-value="1.778056" x="516.5" y="90.0" width="18.0" height="180.0"><title>Q2&#x27;25: $1.78 млрд</title></rect><rect class="bar" data-period="Q3&#x27;25" data-value="1.892641" x="545.5" y="78.4" width="18.0" height="191.6"><title>Q3&#x27;25: $1.89 млрд</title></rect><text class="axis" x="554.5" y="302" text-anchor="middle">Q3&#x27;25</text><rect class="bar" data-period="Q4&#x27;25" data-value="1.998448" x="574.5" y="67.7" width="18.0" height="202.3"><title>Q4&#x27;25: $2.00 млрд</title></rect><rect class="bar" data-period="Q1&#x27;26" data-value="1.928437" x="603.5" y="74.8" width="18.0" height="195.2"><title>Q1&#x27;26: $1.93 млрд</title></rect><rect class="bar current" data-period="Q2&#x27;26" data-value="2.044397" x="632.5" y="63.0" width="18.0" height="207.0"><title>Q2&#x27;26: $2.04 млрд</title></rect><text class="axis" x="641.5" y="302" text-anchor="middle">Q2&#x27;26</text><g data-overlay="ebit-margin" aria-label="EBIT-маржа, %"><path d="M 90.5,90.6 L 119.5,86.0 L 148.5,84.5 L 177.5,85.3 L 206.5,79.9 L 235.5,82.2 L 264.5,75.3 L 293.5,75.3 L 322.5,63.0 L 351.5,73.0 L 380.5,86.0 L 409.5,72.2 L 438.5,69.9 L 467.5,66.1 L 496.5,68.4 L 525.5,70.7 L 554.5,72.2 L 583.5,76.1 L 612.5,65.3 L 641.5,72.2" style="fill:none;stroke:#28342e;stroke-width:1.4;stroke-linejoin:round"/><text x="90.5" y="85.6" text-anchor="middle" class="growth-label" style="fill:#28342e;stroke:#fff;stroke-width:2.5;paint-order:stroke;stroke-linejoin:round">23%</text><text x="206.5" y="74.9" text-anchor="middle" class="growth-label" style="fill:#28342e;stroke:#fff;stroke-width:2.5;paint-order:stroke;stroke-linejoin:round">25%</text><text x="322.5" y="58.0" text-anchor="middle" class="growth-label" style="fill:#28342e;stroke:#fff;stroke-width:2.5;paint-order:stroke;stroke-linejoin:round">27%</text><text x="438.5" y="64.9" text-anchor="middle" class="growth-label" style="fill:#28342e;stroke:#fff;stroke-width:2.5;paint-order:stroke;stroke-linejoin:round">26%</text><text x="554.5" y="67.2" text-anchor="middle" class="growth-label" style="fill:#28342e;stroke:#fff;stroke-width:2.5;paint-order:stroke;stroke-linejoin:round">26%</text><text x="641.5" y="67.2" text-anchor="middle" class="growth-label" style="fill:#28342e;stroke:#fff;stroke-width:2.5;paint-order:stroke;stroke-linejoin:round">26%</text><text x="656.0" y="24" text-anchor="end" class="axis" style="fill:#28342e">EBIT-маржа, %</text></g></g></svg></figure><figure class="revenue-growth-figure"><figcaption>Темп год к году</figcaption><svg class="revenue-growth-svg" data-frequency="quarterly" viewBox="0 0 680 290" role="img" aria-label="Изменение выручки год к году, проценты"><g><line class="grid" x1="76" x2="656" y1="247.0" y2="247.0"/><text class="axis" x="66" y="253.0" text-anchor="end">-0%</text><line class="zero" x1="76" x2="656" y1="243.6" y2="243.6"/><text class="axis" x="66" y="249.6" text-anchor="end">0%</text><line class="grid" x1="76" x2="656" y1="35.0" y2="35.0"/><text class="axis" x="66" y="41.0" text-anchor="end">15%</text><path class="growth-line" d="M 206.5,136.2 L 235.5,130.7 L 264.5,111.3 L 293.5,122.6 L 322.5,179.9 L 351.5,153.5 L 380.5,122.4 L 409.5,168.6 L 438.5,170.1 L 467.5,218.9 L 496.5,247.0 L 525.5,208.9 L 554.5,93.6 L 583.5,56.4 L 612.5,85.6 L 641.5,35.0"/><text class="axis" x="90.5" y="282" text-anchor="middle">Q3&#x27;21</text><g class="growth-point" data-period="Q3&#x27;22" data-rate="7.711977877128939"><title>Q3&#x27;22: +7.7%</title><circle class="growth-dot" cx="206.5" cy="136.2" r="4"/><text class="growth-label" x="206.5" y="123.2" text-anchor="middle">+8%</text></g><text class="axis" x="206.5" y="282" text-anchor="middle">Q3&#x27;22</text><g class="growth-point" data-period="Q4&#x27;22" data-rate="8.107890633052794"><title>Q4&#x27;22: +8.1%</title><circle class="growth-dot" cx="235.5" cy="130.7" r="4"/></g><g class="growth-point" data-period="Q1&#x27;23" data-rate="9.502202567662522"><title>Q1&#x27;23: +9.5%</title><circle class="growth-dot" cx="264.5" cy="111.3" r="4"/><text class="growth-label" x="264.5" y="98.3" text-anchor="middle">+10%</text></g><g class="growth-point" data-period="Q2&#x27;23" data-rate="8.686331007453042"><title>Q2&#x27;23: +8.7%</title><circle class="growth-dot" cx="293.5" cy="122.6" r="4"/></g><g class="growth-point" data-period="Q3&#x27;23" data-rate="4.578659686322717"><title>Q3&#x27;23: +4.6%</title><circle class="growth-dot" cx="322.5" cy="179.9" r="4"/><text class="growth-label" x="322.5" y="166.9" text-anchor="middle">+5%</text></g><text class="axis" x="322.5" y="282" text-anchor="middle">Q3&#x27;23</text><g class="growth-point" data-period="Q4&#x27;23" data-rate="6.472297217080736"><title>Q4&#x27;23: +6.5%</title><circle class="growth-dot" cx="351.5" cy="153.5" r="4"/></g><g class="growth-point" data-period="Q1&#x27;24" data-rate="8.707126653839392"><title>Q1&#x27;24: +8.7%</title><circle class="growth-dot" cx="380.5" cy="122.4" r="4"/><text class="growth-label" x="380.5" y="109.4" text-anchor="middle">+9%</text></g><g class="growth-point" data-period="Q2&#x27;24" data-rate="5.389855240624719"><title>Q2&#x27;24: +5.4%</title><circle class="growth-dot" cx="409.5" cy="168.6" r="4"/></g><g class="growth-point" data-period="Q3&#x27;24" data-rate="5.282539158276522"><title>Q3&#x27;24: +5.3%</title><circle class="growth-dot" cx="438.5" cy="170.1" r="4"/><text class="growth-label" x="438.5" y="157.1" text-anchor="middle">+5%</text></g><text class="axis" x="438.5" y="282" text-anchor="middle">Q3&#x27;24</text><g class="growth-point" data-period="Q4&#x27;24" data-rate="1.7746412962155178"><title>Q4&#x27;24: +1.8%</title><circle class="growth-dot" cx="467.5" cy="218.9" r="4"/></g><g class="growth-point" data-period="Q1&#x27;25" data-rate="-0.24242878042599614"><title>Q1&#x27;25: -0.2%</title><circle class="growth-dot" cx="496.5" cy="247.0" r="4"/><text class="growth-label" x="496.5" y="234.0" text-anchor="middle">-0%</text></g><g class="growth-point" data-period="Q2&#x27;25" data-rate="2.4914199283620375"><title>Q2&#x27;25: +2.5%</title><circle class="growth-dot" cx="525.5" cy="208.9" r="4"/></g><g class="growth-point" data-period="Q3&#x27;25" data-rate="10.773784300734413"><title>Q3&#x27;25: +10.8%</title><circle class="growth-dot" cx="554.5" cy="93.6" r="4"/><text class="growth-label" x="554.5" y="80.6" text-anchor="middle">+11%</text></g><text class="axis" x="554.5" y="282" text-anchor="middle">Q3&#x27;25</text><g class="growth-point" data-period="Q4&#x27;25" data-rate="13.44492115699234"><title>Q4&#x27;25: +13.4%</title><circle class="growth-dot" cx="583.5" cy="56.4" r="4"/></g><g class="growth-point" data-period="Q1&#x27;26" data-rate="11.343492471871652"><title>Q1&#x27;26: +11.3%</title><circle class="growth-dot" cx="612.5" cy="85.6" r="4"/></g><g class="growth-point" data-period="Q2&#x27;26" data-rate="14.979336983762037"><title>Q2&#x27;26: +15.0%</title><circle class="growth-dot" cx="641.5" cy="35.0" r="4"/><text class="growth-label" x="641.5" y="22.0" text-anchor="middle">+15%</text></g><text class="axis" x="641.5" y="282" text-anchor="middle">Q2&#x27;26</text></g></svg><details class="revenue-values" data-frequency="quarterly"><summary>Все периоды и значения</summary><table><thead><tr><th>Период</th><th>Выручка, $ млрд</th><th>Темп г/г</th></tr></thead><tbody><tr><th scope="row">Q3&#x27;21</th><td>1.44</td><td>н/д</td></tr><tr><th scope="row">Q4&#x27;21</th><td>1.50</td><td>н/д</td></tr><tr><th scope="row">Q1&#x27;22</th><td>1.46</td><td>н/д</td></tr><tr><th scope="row">Q2&#x27;22</th><td>1.51</td><td>н/д</td></tr><tr><th scope="row">Q3&#x27;22</th><td>1.55</td><td>+7.7%</td></tr><tr><th scope="row">Q4&#x27;22</th><td>1.63</td><td>+8.1%</td></tr><tr><th scope="row">Q1&#x27;23</th><td>1.60</td><td>+9.5%</td></tr><tr><th scope="row">Q2&#x27;23</th><td>1.65</td><td>+8.7%</td></tr><tr><th scope="row">Q3&#x27;23</th><td>1.62</td><td>+4.6%</td></tr><tr><th scope="row">Q4&#x27;23</th><td>1.73</td><td>+6.5%</td></tr><tr><th scope="row">Q1&#x27;24</th><td>1.74</td><td>+8.7%</td></tr><tr><th scope="row">Q2&#x27;24</th><td>1.73</td><td>+5.4%</td></tr><tr><th scope="row">Q3&#x27;24</th><td>1.71</td><td>+5.3%</td></tr><tr><th scope="row">Q4&#x27;24</th><td>1.76</td><td>+1.8%</td></tr><tr><th scope="row">Q1&#x27;25</th><td>1.73</td><td>-0.2%</td></tr><tr><th scope="row">Q2&#x27;25</th><td>1.78</td><td>+2.5%</td></tr><tr><th scope="row">Q3&#x27;25</th><td>1.89</td><td>+10.8%</td></tr><tr><th scope="row">Q4&#x27;25</th><td>2.00</td><td>+13.4%</td></tr><tr><th scope="row">Q1&#x27;26</th><td>1.93</td><td>+11.3%</td></tr><tr><th scope="row">Q2&#x27;26</th><td>2.04</td><td>+15.0%</td></tr></tbody></table></details></figure></div><div class="revenue-screen-pulse"><div class="growth-pulse"><span><small>Q3&#x27;25</small><strong>+10.8%</strong></span><span><small>Q4&#x27;25</small><strong>+13.4%</strong></span><span><small>Q1&#x27;26</small><strong>+11.3%</strong></span><span><small>Q2&#x27;26</small><strong>+15.0%</strong></span></div></div><p class="growth-acceleration">Δ темпа <b>+3.6 п.п.</b> · 1 последовательных ускорений · Σ 4 кв. к TTM снимка +0.0%</p></section></div>
+<div class="growth-bridge only-placeholder"><strong>Разложение роста</strong><span>Органический · поглощения · валюта: <b>не подключено</b></span><small>показывается только из раскрытия компании</small></div>
+<div class="two-up leverage-panels"><section><header class="mini-head"><div><h2>Долг, EBITDA и коэффициент</h2><div class="series-key"><span class="key-debt">Долг, $ млрд</span><span class="key-ebitda">EBITDA, $ млрд</span><span class="key-ratio">Долг / EBITDA, x</span></div></div><strong>1.0x</strong></header><div class="financial-history-chart"><svg class="capital-chart" viewBox="0 0 680 154" role="img" aria-label="История долга, EBITDA и отношения долга к EBITDA"><g font-family="IBM Plex Sans, Segoe UI, sans-serif"><line x1="42" y1="112.0" x2="632" y2="112.0" class="grid"/><text x="35" y="116.0" class="axis" text-anchor="end">0.0</text><line x1="42" y1="64.0" x2="632" y2="64.0" class="grid"/><text x="35" y="68.0" class="axis" text-anchor="end">2.0</text><line x1="42" y1="16.0" x2="632" y2="16.0" class="grid"/><text x="35" y="20.0" class="axis" text-anchor="end">3.9</text><rect x="73.0" y="49.5" width="26.0" height="62.5" class="debt-bar"><title>2021: долг $2.5 млрд</title></rect><rect x="103.0" y="72.7" width="26.0" height="39.3" class="ebitda-bar"><title>2021: EBITDA $1.60 млрд</title></rect><text x="101.0" y="137" text-anchor="middle" class="axis">2021</text><rect x="191.0" y="53.4" width="26.0" height="58.6" class="debt-bar"><title>2022: долг $2.4 млрд</title></rect><rect x="221.0" y="67.3" width="26.0" height="44.7" class="ebitda-bar"><title>2022: EBITDA $1.82 млрд</title></rect><text x="219.0" y="137" text-anchor="middle" class="axis">2022</text><rect x="309.0" y="30.6" width="26.0" height="81.4" class="debt-bar"><title>2023: долг $3.3 млрд</title></rect><rect x="339.0" y="61.8" width="26.0" height="50.2" class="ebitda-bar"><title>2023: EBITDA $2.04 млрд</title></rect><text x="337.0" y="137" text-anchor="middle" class="axis">2023</text><rect x="427.0" y="60.9" width="26.0" height="51.1" class="debt-bar"><title>2024: долг $2.1 млрд</title></rect><rect x="457.0" y="58.9" width="26.0" height="53.1" class="ebitda-bar"><title>2024: EBITDA $2.16 млрд</title></rect><text x="455.0" y="137" text-anchor="middle" class="axis">2024</text><rect x="545.0" y="55.9" width="26.0" height="56.1" class="debt-bar"><title>2025: долг $2.3 млрд</title></rect><rect x="575.0" y="54.7" width="26.0" height="57.3" class="ebitda-bar"><title>2025: EBITDA $2.33 млрд</title></rect><text x="573.0" y="137" text-anchor="middle" class="axis">2025</text><path d="M 101.0,38.4 L 219.0,51.4 L 337.0,37.0 L 455.0,67.6 L 573.0,66.6" class="ratio-line"/><circle cx="101.0" cy="38.4" r="3" class="ratio-dot"><title>2021: 1.6x</title></circle><text x="101.0" y="31.4" text-anchor="middle" class="ratio-label">1.6x</text><circle cx="219.0" cy="51.4" r="3" class="ratio-dot"><title>2022: 1.3x</title></circle><text x="219.0" y="44.4" text-anchor="middle" class="ratio-label">1.3x</text><circle cx="337.0" cy="37.0" r="3" class="ratio-dot"><title>2023: 1.6x</title></circle><text x="337.0" y="30.0" text-anchor="middle" class="ratio-label">1.6x</text><circle cx="455.0" cy="67.6" r="3" class="ratio-dot"><title>2024: 1.0x</title></circle><text x="455.0" y="60.6" text-anchor="middle" class="ratio-label">1.0x</text><circle cx="573.0" cy="66.6" r="3" class="ratio-dot"><title>2025: 1.0x</title></circle><text x="573.0" y="59.6" text-anchor="middle" class="ratio-label">1.0x</text></g></svg></div><p class="metric-note">Долг $2.3 млрд · EBITDA $2.33 млрд · год к году +7.9%</p><small class="benchmark-note">Показана EBITDA: EBIT + D&amp;A из 10-K по ФГ (есть за 5 из 5 лет); долг валовый на конец ФГ</small></section>
+<section><header class="mini-head"><div><h2>EBITDA-маржа</h2><div class="series-key"><span class="key-debt">Компания</span><span class="key-peer">Медиана SIC-38</span></div></div><strong>31.5%</strong></header><div class="financial-history-chart"><svg class="margin-chart" data-y-min="0" data-y-max="35" viewBox="0 0 680 158" role="img" aria-label="EBITDA-маржа компании и медиана отрасли; шкала от 0 до 35 процентов"><line class="grid" x1="80" x2="622" y1="122.0" y2="122.0"/><text class="axis" x="42" y="126.0" text-anchor="end">0%</text><line class="grid" x1="80" x2="622" y1="108.9" y2="108.9"/><text class="axis" x="42" y="112.9" text-anchor="end">5%</text><line class="grid" x1="80" x2="622" y1="95.7" y2="95.7"/><text class="axis" x="42" y="99.7" text-anchor="end">10%</text><line class="grid" x1="80" x2="622" y1="82.6" y2="82.6"/><text class="axis" x="42" y="86.6" text-anchor="end">15%</text><line class="grid" x1="80" x2="622" y1="69.4" y2="69.4"/><text class="axis" x="42" y="73.4" text-anchor="end">20%</text><line class="grid" x1="80" x2="622" y1="56.3" y2="56.3"/><text class="axis" x="42" y="60.3" text-anchor="end">25%</text><line class="grid" x1="80" x2="622" y1="43.1" y2="43.1"/><text class="axis" x="42" y="47.1" text-anchor="end">30%</text><line class="grid" x1="80" x2="622" y1="30.0" y2="30.0"/><text class="axis" x="42" y="34.0" text-anchor="end">35%</text><path class="margin-company" d="M 80.0,46.0 L 215.5,44.2 L 351.0,40.5 L 486.5,40.0 L 622.0,39.2"/><circle class="metric-dot" cx="80.0" cy="46.0" r="3"/><text class="metric-label company-label" x="80.0" y="37.0" text-anchor="middle">28.9%</text><circle class="metric-dot" cx="215.5" cy="44.2" r="3"/><text class="metric-label company-label" x="215.5" y="35.2" text-anchor="middle">29.6%</text><circle class="metric-dot" cx="351.0" cy="40.5" r="3"/><text class="metric-label company-label" x="351.0" y="31.5" text-anchor="middle">31.0%</text><circle class="metric-dot" cx="486.5" cy="40.0" r="3"/><text class="metric-label company-label" x="486.5" y="31.0" text-anchor="middle">31.2%</text><circle class="metric-dot" cx="622.0" cy="39.2" r="3"/><text class="metric-label company-label" x="622.0" y="30.2" text-anchor="middle">31.5%</text><path class="margin-peer" d="M 80.0,105.4 L 215.5,111.5 L 351.0,103.1 L 486.5,105.7 L 622.0,104.1"/><rect class="peer-dot" x="77.0" y="102.4" width="6" height="6"/><text class="metric-label peer-label" x="50.0" y="123.4" text-anchor="start">6.3% n=144</text><rect class="peer-dot" x="212.5" y="108.5" width="6" height="6"/><text class="metric-label peer-label" x="215.5" y="129.5" text-anchor="middle">4.0% n=145</text><rect class="peer-dot" x="348.0" y="100.1" width="6" height="6"/><text class="metric-label peer-label" x="351.0" y="121.1" text-anchor="middle">7.2% n=148</text><rect class="peer-dot" x="483.5" y="102.7" width="6" height="6"/><text class="metric-label peer-label" x="486.5" y="123.7" text-anchor="middle">6.2% n=150</text><rect class="peer-dot" x="619.0" y="101.1" width="6" height="6"/><text class="metric-label peer-label" x="622.0" y="122.1" text-anchor="middle">6.8% n=145</text><text class="axis" x="80.0" y="153" text-anchor="middle">2021</text><text class="axis" x="215.5" y="153" text-anchor="middle">2022</text><text class="axis" x="351.0" y="153" text-anchor="middle">2023</text><text class="axis" x="486.5" y="153" text-anchor="middle">2024</text><text class="axis" x="622.0" y="153" text-anchor="middle">2025</text></svg><svg class="margin-screen-chart" data-y-min="0" data-y-max="35" viewBox="0 0 680 320" role="img" aria-label="EBITDA-маржа компании и медиана отрасли; шкала от 0 до 35 процентов"><line class="grid" x1="76" x2="622" y1="260.0" y2="260.0"/><text class="axis" x="62" y="266.0" text-anchor="end">0%</text><line class="grid" x1="76" x2="622" y1="228.6" y2="228.6"/><text class="axis" x="62" y="234.6" text-anchor="end">5%</text><line class="grid" x1="76" x2="622" y1="197.1" y2="197.1"/><text class="axis" x="62" y="203.1" text-anchor="end">10%</text><line class="grid" x1="76" x2="622" y1="165.7" y2="165.7"/><text class="axis" x="62" y="171.7" text-anchor="end">15%</text><line class="grid" x1="76" x2="622" y1="134.3" y2="134.3"/><text class="axis" x="62" y="140.3" text-anchor="end">20%</text><line class="grid" x1="76" x2="622" y1="102.9" y2="102.9"/><text class="axis" x="62" y="108.9" text-anchor="end">25%</text><line class="grid" x1="76" x2="622" y1="71.4" y2="71.4"/><text class="axis" x="62" y="77.4" text-anchor="end">30%</text><line class="grid" x1="76" x2="622" y1="40.0" y2="40.0"/><text class="axis" x="62" y="46.0" text-anchor="end">35%</text><path class="margin-company" data-series="company" d="M 76.0,78.3 L 212.5,73.9 L 349.0,65.1 L 485.5,63.9 L 622.0,62.0"/><g class="margin-screen-point" data-series="company" data-year="2021" data-value="28.9"><title>2021: 28.9%</title><circle class="metric-dot" cx="76.0" cy="78.3" r="4"/><text class="metric-label company-label" x="76.0" y="64.3" text-anchor="middle">28.9%</text></g><g class="margin-screen-point" data-series="company" data-year="2022" data-value="29.6"><title>2022: 29.6%</title><circle class="metric-dot" cx="212.5" cy="73.9" r="4"/><text class="metric-label company-label" x="212.5" y="59.9" text-anchor="middle">29.6%</text></g><g class="margin-screen-point" data-series="company" data-year="2023" data-value="31.0"><title>2023: 31.0%</title><circle class="metric-dot" cx="349.0" cy="65.1" r="4"/><text class="metric-label company-label" x="349.0" y="51.1" text-anchor="middle">31.0%</text></g><g class="margin-screen-point" data-series="company" data-year="2024" data-value="31.2"><title>2024: 31.2%</title><circle class="metric-dot" cx="485.5" cy="63.9" r="4"/><text class="metric-label company-label" x="485.5" y="49.9" text-anchor="middle">31.2%</text></g><g class="margin-screen-point" data-series="company" data-year="2025" data-value="31.5"><title>2025: 31.5%</title><circle class="metric-dot" cx="622.0" cy="62.0" r="4"/><text class="metric-label company-label" x="622.0" y="48.0" text-anchor="middle">31.5%</text></g><path class="margin-peer" data-series="peer" d="M 76.0,220.4 L 212.5,234.9 L 349.0,214.7 L 485.5,221.0 L 622.0,217.3"/><g class="margin-screen-point" data-series="peer" data-year="2021" data-value="6.3"><title>2021: 6.3%</title><rect class="peer-dot" x="72.0" y="216.4" width="8" height="8"/></g><g class="margin-screen-point" data-series="peer" data-year="2022" data-value="4.0"><title>2022: 4.0%</title><rect class="peer-dot" x="208.5" y="230.9" width="8" height="8"/></g><g class="margin-screen-point" data-series="peer" data-year="2023" data-value="7.2"><title>2023: 7.2%</title><rect class="peer-dot" x="345.0" y="210.7" width="8" height="8"/></g><g class="margin-screen-point" data-series="peer" data-year="2024" data-value="6.2"><title>2024: 6.2%</title><rect class="peer-dot" x="481.5" y="217.0" width="8" height="8"/></g><g class="margin-screen-point" data-series="peer" data-year="2025" data-value="6.8"><title>2025: 6.8%</title><rect class="peer-dot" x="618.0" y="213.3" width="8" height="8"/></g><text class="axis" x="76.0" y="302" text-anchor="middle">2021</text><text class="axis" x="212.5" y="302" text-anchor="middle">2022</text><text class="axis" x="349.0" y="302" text-anchor="middle">2023</text><text class="axis" x="485.5" y="302" text-anchor="middle">2024</text><text class="axis" x="622.0" y="302" text-anchor="middle">2025</text></svg><table class="margin-screen-table margin-benchmark-values" aria-label="EBITDA-маржа и размер отраслевой выборки по годам"><thead><tr><th scope="col">Год</th><th scope="col">2021</th><th scope="col">2022</th><th scope="col">2023</th><th scope="col">2024</th><th scope="col">2025</th></tr></thead><tbody><tr data-series="company"><th scope="row">Компания</th><td data-year="2021" data-value="28.9">28.9%</td><td data-year="2022" data-value="29.6">29.6%</td><td data-year="2023" data-value="31.0">31.0%</td><td data-year="2024" data-value="31.2">31.2%</td><td data-year="2025" data-value="31.5">31.5%</td></tr><tr data-series="peer"><th scope="row">Медиана отрасли</th><td data-year="2021" data-value="6.3">6.3%</td><td data-year="2022" data-value="4.0">4.0%</td><td data-year="2023" data-value="7.2">7.2%</td><td data-year="2024" data-value="6.2">6.2%</td><td data-year="2025" data-value="6.8">6.8%</td></tr><tr data-series="peer-count"><th scope="row">Компаний (n)</th><td data-year="2021" data-value="144">144</td><td data-year="2022" data-value="145">145</td><td data-year="2023" data-value="148">148</td><td data-year="2024" data-value="150">150</td><td data-year="2025" data-value="145">145</td></tr></tbody></table></div><p class="metric-note">Медиана SIC-38 6.8% · +24.7 п.п. · ось Y от 0%</p><small class="benchmark-note">Медиана корпуса, SIC-38, n=145 · EBITDA / выручка за ФГ по 10-K; n по годам — у точек</small></section></div>
+<div class="two-up mix-panels"><section><h2>Выручка по продуктам</h2><div class="mix-bar"><span style="width:46.8%;background:#315f4a"></span><span style="width:29.6%;background:#688474"></span><span style="width:23.6%;background:#96aa9d"></span></div><div class="mix-list"><div><i style="background:#315f4a"></i><span>Process And Analytical Instrumentation</span><b>46.8%</b></div><div><i style="background:#688474"></i><span>Aerospace And Power</span><b>29.6%</b></div><div><i style="background:#96aa9d"></i><span>Automation And Engineered Solutions</span><b>23.6%</b></div></div></section><section><h2>Выручка по географии</h2><p class="metric-note not-disclosed" data-block="revenue_mix">Не раскрыто: доли регионов — в отчётности 10-K 0001037868-26-000016 этой оси нет: компания её не раскрывает.</p></section></div>
+<footer><span>AME · 2026-10-05 · USD · кандидат 2026-09-09</span><span>Полоса — собственная норма ±1σ, не вероятности · ориентир — Медиана корпуса, SIC-38, n=145</span></footer>
+</main></article><dialog class="profile-dialog people-dialog no-print people-directory" id="people-ame-directory" aria-labelledby="people-ame-directory-title"><div class="dialog-head"><h2 id="people-ame-directory-title">Все люди и владельцы</h2><button type="button" class="dialog-close" data-close aria-label="Закрыть">×</button></div><p class="people-evidence">Все сохранённые записи доступны ниже. Это не полный состав руководства и не полный реестр владельцев.</p><section><h3>Люди</h3><ul class="people-directory-list"><li><button type="button" class="people-trigger" data-dialog="people-ame-person-4" aria-haspopup="dialog">Zapico David A</button><span class="people-role">CHIEF EXECUTIVE OFFICER <span class="people-historical">(форма SEC)</span></span></li><li><button type="button" class="people-trigger" data-dialog="people-ame-person-1" aria-haspopup="dialog">Oscher Ronald J</button><span class="people-role">CHIEF ADMINISTRATIVE OFFICER <span class="people-historical">(форма SEC)</span></span></li><li><button type="button" class="people-trigger" data-dialog="people-ame-person-2" aria-haspopup="dialog">Speranza Emanuela</button><span class="people-role">CHIEF COMMERCIAL OFFICER <span class="people-historical">(форма SEC)</span></span></li><li><button type="button" class="people-trigger" data-dialog="people-ame-person-3" aria-haspopup="dialog">Conti Anthony James</button><span class="people-role">директор <span class="people-historical">(форма SEC)</span></span></li></ul></section><section><h3>Владельцы из сохранённых форм</h3><ul class="people-directory-list"><li><button type="button" class="people-trigger" data-dialog="people-ame-holder-5" aria-haspopup="dialog">The Vanguard Group</button><span class="people-role">Владелец из сохранённой формы</span></li><li><button type="button" class="people-trigger" data-dialog="people-ame-holder-6" aria-haspopup="dialog">BlackRock, Inc</button><span class="people-role">Владелец из сохранённой формы</span></li></ul></section></dialog><dialog class="profile-dialog people-dialog no-print " id="people-ame-person-4" aria-labelledby="people-ame-person-4-title"><div class="dialog-head"><h2 id="people-ame-person-4-title">Zapico David A</h2><button type="button" class="dialog-close" data-close aria-label="Закрыть">×</button></div><p class="people-evidence">Биографические сведения не добавлены.</p><section class="people-disclosures"><h3>Сохранённые раскрытия SEC</h3><p class="people-evidence">Исторический срез: не подтверждает текущее владение или контроль. Выборка неполная; записи могут иметь разные даты.</p><article class="people-disclosure"><h4>Zapico David A</h4><p class="people-evidence">Дата сохранённого раскрытия: 2026-03-19</p><dl><dt>Роль в сохранённой форме</dt><dd>CHIEF EXECUTIVE OFFICER</dd><dt>Акции в записи</dt><dd>24 058</dd><dt>Доля в сохранённой записи</dt><dd>0,01%</dd><dt>Форма</dt><dd>4</dd><dt>Номер SEC accession</dt><dd>0001037868-26-000129</dd></dl><p class="people-evidence">База расчёта сохранённой доли: 229,203 млн акций; на 2026-08-04. Дата базы может отличаться от даты раскрытия.</p></article><p class="people-evidence">Источник: SEC EDGAR: формы 3/4/5 и SC 13D/G.</p></section></dialog><dialog class="profile-dialog people-dialog no-print " id="people-ame-person-1" aria-labelledby="people-ame-person-1-title"><div class="dialog-head"><h2 id="people-ame-person-1-title">Oscher Ronald J</h2><button type="button" class="dialog-close" data-close aria-label="Закрыть">×</button></div><p class="people-evidence">Биографические сведения не добавлены.</p><section class="people-disclosures"><h3>Сохранённые раскрытия SEC</h3><p class="people-evidence">Исторический срез: не подтверждает текущее владение или контроль. Выборка неполная; записи могут иметь разные даты.</p><article class="people-disclosure"><h4>Oscher Ronald J</h4><p class="people-evidence">Дата сохранённого раскрытия: 2026-05-27</p><dl><dt>Роль в сохранённой форме</dt><dd>CHIEF ADMINISTRATIVE OFFICER</dd><dt>Акции в записи</dt><dd>45 767</dd><dt>Доля в сохранённой записи</dt><dd>0,02%</dd><dt>Форма</dt><dd>4</dd><dt>Номер SEC accession</dt><dd>0001037868-26-000165</dd></dl><p class="people-evidence">База расчёта сохранённой доли: 229,203 млн акций; на 2026-08-04. Дата базы может отличаться от даты раскрытия.</p></article><p class="people-evidence">Источник: SEC EDGAR: формы 3/4/5 и SC 13D/G.</p></section></dialog><dialog class="profile-dialog people-dialog no-print " id="people-ame-person-2" aria-labelledby="people-ame-person-2-title"><div class="dialog-head"><h2 id="people-ame-person-2-title">Speranza Emanuela</h2><button type="button" class="dialog-close" data-close aria-label="Закрыть">×</button></div><p class="people-evidence">Биографические сведения не добавлены.</p><section class="people-disclosures"><h3>Сохранённые раскрытия SEC</h3><p class="people-evidence">Исторический срез: не подтверждает текущее владение или контроль. Выборка неполная; записи могут иметь разные даты.</p><article class="people-disclosure"><h4>Speranza Emanuela</h4><p class="people-evidence">Дата сохранённого раскрытия: 2026-03-19</p><dl><dt>Роль в сохранённой форме</dt><dd>CHIEF COMMERCIAL OFFICER</dd><dt>Акции в записи</dt><dd>30 516</dd><dt>Доля в сохранённой записи</dt><dd>0,01%</dd><dt>Форма</dt><dd>4</dd><dt>Номер SEC accession</dt><dd>0001037868-26-000133</dd></dl><p class="people-evidence">База расчёта сохранённой доли: 229,203 млн акций; на 2026-08-04. Дата базы может отличаться от даты раскрытия.</p></article><p class="people-evidence">Источник: SEC EDGAR: формы 3/4/5 и SC 13D/G.</p></section></dialog><dialog class="profile-dialog people-dialog no-print " id="people-ame-person-3" aria-labelledby="people-ame-person-3-title"><div class="dialog-head"><h2 id="people-ame-person-3-title">Conti Anthony James</h2><button type="button" class="dialog-close" data-close aria-label="Закрыть">×</button></div><p class="people-evidence">Биографические сведения не добавлены.</p><section class="people-disclosures"><h3>Сохранённые раскрытия SEC</h3><p class="people-evidence">Исторический срез: не подтверждает текущее владение или контроль. Выборка неполная; записи могут иметь разные даты.</p><article class="people-disclosure"><h4>Conti Anthony James</h4><p class="people-evidence">Дата сохранённого раскрытия: 2026-03-18</p><dl><dt>Роль в сохранённой форме</dt><dd>директор</dd><dt>Акции в записи</dt><dd>30 298</dd><dt>Доля в сохранённой записи</dt><dd>0,01%</dd><dt>Форма</dt><dd>4</dd><dt>Номер SEC accession</dt><dd>0001037868-26-000079</dd></dl><p class="people-evidence">База расчёта сохранённой доли: 229,203 млн акций; на 2026-08-04. Дата базы может отличаться от даты раскрытия.</p></article><p class="people-evidence">Источник: SEC EDGAR: формы 3/4/5 и SC 13D/G.</p></section></dialog><dialog class="profile-dialog people-dialog no-print " id="people-ame-holder-5" aria-labelledby="people-ame-holder-5-title"><div class="dialog-head"><h2 id="people-ame-holder-5-title">The Vanguard Group</h2><button type="button" class="dialog-close" data-close aria-label="Закрыть">×</button></div><p class="people-evidence">Биографические сведения не добавлены.</p><section class="people-disclosures"><h3>Сохранённые раскрытия SEC</h3><p class="people-evidence">Исторический срез: не подтверждает текущее владение или контроль. Выборка неполная; записи могут иметь разные даты.</p><article class="people-disclosure"><h4>The Vanguard Group</h4><p class="people-evidence">Дата сохранённого раскрытия: 2024-02-13</p><dl><dt>Акции в записи</dt><dd>25 576 892</dd><dt>Доля в сохранённой записи</dt><dd>11,08%</dd><dt>Форма</dt><dd>SC 13G/A</dd><dt>Номер SEC accession</dt><dd>0001104659-24-020272</dd></dl><p class="people-evidence">Доля владельца сохранена из формы; на более позднюю базу акций здесь не пересчитывается.</p></article><p class="people-evidence">Источник: SEC EDGAR: формы 3/4/5 и SC 13D/G.</p></section></dialog><dialog class="profile-dialog people-dialog no-print " id="people-ame-holder-6" aria-labelledby="people-ame-holder-6-title"><div class="dialog-head"><h2 id="people-ame-holder-6-title">BlackRock, Inc</h2><button type="button" class="dialog-close" data-close aria-label="Закрыть">×</button></div><p class="people-evidence">Биографические сведения не добавлены.</p><section class="people-disclosures"><h3>Сохранённые раскрытия SEC</h3><p class="people-evidence">Исторический срез: не подтверждает текущее владение или контроль. Выборка неполная; записи могут иметь разные даты.</p><article class="people-disclosure"><h4>BlackRock, Inc</h4><p class="people-evidence">Дата сохранённого раскрытия: 2024-01-26</p><dl><dt>Акции в записи</dt><dd>17 317 217</dd><dt>Доля в сохранённой записи</dt><dd>7,50%</dd><dt>Форма</dt><dd>SC 13G/A</dd><dt>Номер SEC accession</dt><dd>0001086364-24-004226</dd></dl><p class="people-evidence">Доля владельца сохранена из формы; на более позднюю базу акций здесь не пересчитывается.</p></article><p class="people-evidence">Источник: SEC EDGAR: формы 3/4/5 и SC 13D/G.</p></section></dialog><dialog class="profile-dialog no-print" id="range-method"><button class="dialog-close" data-close aria-label="Закрыть">×</button><h2>Диапазон оценки DCF</h2><p>Заливка и штриховка показывают, где цена обычно находилась относительно каждой модели: медиана ±1 стандартное отклонение ln(цена / DCF) по собственным датам расчёта этой компании (Industry n=31 · Measured n=54). На каждой дате расчёта границы равны DCF × exp(медиана ± σ), поэтому полоса следует за ступенями модели.</p><p>Это описательная норма отклонения цены, а не P10–P90 и не результат Монте-Карло: вероятности ей не приписываются. Источник: median ± 1 sd of ln(price/fair) over this name&#x27;s own vintages.</p><p>Матрица чувствительности WACC × g и вероятностный DCF — отдельные расчёты, которых в принятом снимке нет.</p></dialog><script>document.querySelectorAll('[data-print]').forEach(button => button.addEventListener('click', () => window.print()));
+
+const modelButtons=[...document.querySelectorAll('[data-model]')];
+function selectModel(model){
+  modelButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.model===model)));
+  const section=document.querySelector('.price-section'); if(section) section.dataset.view=model;
+  const note=document.querySelector('[data-toggle-note]');
+  if(note) note.textContent = model==='both'
+    ? 'Показаны обе модели: Industry — заливка и ступенчатая линия, Measured — штриховка и ступенчатая линия.'
+    : model==='industry'
+      ? 'Показана только Industry: её ступенчатая линия и полоса заливкой; Measured скрыт (линия, полоса, подписи).'
+      : 'Показана только Measured: её ступенчатая линия и штриховка; Industry скрыт (линия, полоса, подписи).';
+  // the attribute, not the .hidden property: SVG elements have no .hidden, so the property only made an expando
+  document.querySelectorAll('[data-series="industry"],[data-series-label="industry"]').forEach(node => node.toggleAttribute('hidden', model==='measured'));
+  document.querySelectorAll('[data-series="measured"],[data-series-label="measured"]').forEach(node => node.toggleAttribute('hidden', model==='industry'));
+  document.dispatchEvent(new CustomEvent('datum:model-change'));
+}
+modelButtons.forEach(button => button.addEventListener('click',()=>selectModel(button.dataset.model)));
+selectModel('both');
+
+// Keep a dossier above its directory and above the enclosing company sheet.
+const dialogStack=[];
+const dialogOpeners=new WeakMap();
+document.querySelectorAll('[data-dialog]').forEach(button => button.addEventListener('click',()=>{
+  const dialog=document.getElementById(button.dataset.dialog);
+  if(!(dialog instanceof HTMLDialogElement)||dialog.open) return;
+  dialogOpeners.set(dialog,button);
+  dialog.showModal();
+  dialogStack.push(dialog);
+}));
+document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click',()=>button.closest('dialog')?.close()));
+document.querySelectorAll('dialog').forEach(dialog=>{
+  dialog.addEventListener('close',()=>{
+    const index=dialogStack.indexOf(dialog);
+    if(index>=0) dialogStack.splice(index,1);
+    const opener=dialogOpeners.get(dialog);
+    if(opener?.isConnected) opener.focus({preventScroll:true});
+  });
+  dialog.addEventListener('click',event=>{
+    if(event.target!==dialog) return;
+    const box=dialog.getBoundingClientRect();
+    if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom) dialog.close();
+  });
+});
+window.addEventListener('keydown',event=>{
+  const dialog=[...dialogStack].reverse().find(item=>item.open);
+  if(!dialog) return;
+  if(event.key==='Escape'){
+    // Parent overview listens in the iframe too: consume just this modal's Esc.
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    dialog.close();
+  }else if(event.key==='Tab'){
+    const items=[...dialog.querySelectorAll('a[href],button,input,select,textarea,[tabindex]')]
+      .filter(item=>!item.disabled&&item.tabIndex>=0&&item.getClientRects().length);
+    const first=items[0],last=items[items.length-1],active=document.activeElement;
+    if(!first){event.preventDefault();dialog.focus();return;}
+    if(event.shiftKey&&(active===first||!dialog.contains(active))){event.preventDefault();last.focus();}
+    else if(!event.shiftKey&&(active===last||!dialog.contains(active))){event.preventDefault();first.focus();}
+  }
+},true);
+window.addEventListener('beforeprint',()=>document.querySelectorAll('dialog[open]').forEach(dialog=>dialog.close()));
+
+// The original SVG remains the print/fallback chart. All interactive state is local.
+document.querySelectorAll('[data-price-explorer]').forEach((wrapper, chartIndex) => {
+  const DAY=86400000, NS='http://www.w3.org/2000/svg';
+  const colors={price:'#17201c',industry:'#2f6552',measured:'#77877f'};
+  const titles={price:'Цена',industry:'Industry',measured:'Measured'};
+  let shell;
+  try {
+    const payload=JSON.parse(wrapper.querySelector('[data-price-chart-payload]').textContent);
+    const iso=t=>new Date(t).toISOString().slice(0,10);
+    const parseDay=s=>{
+      if(typeof s!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(s)) throw new Error('Invalid chart date');
+      const t=Date.parse(s+'T00:00:00Z');
+      if(!Number.isFinite(t)||iso(t)!==s) throw new Error('Invalid chart date');
+      return t;
+    };
+    const points=(rows,band=false)=>{
+      if(!Array.isArray(rows)) throw new Error('Missing chart series');
+      let previous=-Infinity;
+      return rows.map(row=>{
+        if(!Array.isArray(row)||row.length!==(band?3:2)) throw new Error('Invalid chart point');
+        const t=parseDay(row[0]);
+        if(t<previous) throw new Error('Chart dates are decreasing');
+        previous=t;
+        const values=row.slice(1);
+        if(values.some(v=>v!==null&&(typeof v!=='number'||!Number.isFinite(v)))) throw new Error('Invalid chart value');
+        if(band&&values.every(v=>v!==null)&&values[0]>values[1]) throw new Error('Invalid chart band');
+        return {t,day:row[0],values,valid:values.every(v=>v!==null)};
+      });
+    };
+    const runs=rows=>{
+      const result=[]; let current=[];
+      rows.forEach(p=>{
+        if(p.valid)current.push(p);
+        else if(current.length){
+          current.endExclusive=p.t===current.at(-1).t;
+          if(current.endExclusive){
+            const boundary=current.at(-1);boundary.refusalBoundary=true;
+            boundary.observation=current.length>1?current.at(-2):null;
+          }
+          result.push(current);current=[];
+        }
+      });
+      if(current.length) result.push(current);
+      return result;
+    };
+    const series={}, bands={};
+    ['price','industry','measured'].forEach(key=>series[key]=points(payload.series[key]));
+    ['industry','measured'].forEach(key=>bands[key]=points(payload.bands[key],true));
+    const dates=Object.values(series).flat().concat(Object.values(bands).flat()).map(p=>p.t);
+    if(!dates.length) return;
+    const fullStart=Math.min(...dates), fullEnd=Math.max(...dates);
+    if(fullEnd<=fullStart) return;
+    const minSpan=Math.min(DAY,fullEnd-fullStart);
+    const seriesRuns=Object.fromEntries(Object.entries(series).map(([key,rows])=>[key,runs(rows)]));
+    const bandRuns=Object.fromEntries(Object.entries(bands).map(([key,rows])=>[key,runs(rows)]));
+    const observationEnds={};
+    ['industry','measured'].forEach(key=>{
+      if(payload.observationEnds?.[key])observationEnds[key]=parseDay(payload.observationEnds[key]);
+    });
+    let start=fullStart,end=fullEnd,width=0,height=340,geometry=null;
+    let pointers=new Map(),gesture=null;
+    const html=(tag,cls,text)=>{const e=document.createElement(tag); if(cls)e.className=cls; if(text)e.textContent=text;return e;};
+    const svg=(tag,attrs={},text)=>{
+      const e=document.createElementNS(NS,tag);
+      Object.entries(attrs).forEach(([key,value])=>e.setAttribute(key,String(value)));
+      if(text!==undefined)e.textContent=text;
+      return e;
+    };
+    const button=(text,parent)=>{const e=html('button','',text);e.type='button';parent.append(e);return e;};
+    const money=value=>'$'+new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(value);
+    const section=wrapper.closest('.price-section');
+    const selected=()=>['price',...(section?.dataset.view==='industry'?['industry']:section?.dataset.view==='measured'?['measured']:['industry','measured'])];
+    shell=html('div','chart-interactive no-print');
+    const controls=html('div','chart-controls'),presets=html('div','chart-presets'),actions=html('div','chart-actions'),dateControls=html('div','chart-dates');
+    presets.setAttribute('role','group');presets.setAttribute('aria-label','Период графика');
+    [['1','1 год'],['3','3 года'],['5','5 лет'],['all','Вся история']].forEach(([key,title])=>{
+      const b=button(title,presets);b.dataset.chartPreset=key;
+      if(key==='all')b.dataset.chartAction='reset';
+      b.addEventListener('click',()=>{
+        const d=new Date(fullEnd);if(key!=='all')d.setUTCFullYear(d.getUTCFullYear()-Number(key));
+        setRange(key==='all'?fullStart:d.getTime(),fullEnd);
+        presets.querySelectorAll('button').forEach(el=>el.setAttribute('aria-pressed',String(el===b)));
+      });
+    });
+    [['zoom-in','+','Приблизить'],['zoom-out','−','Отдалить']].forEach(([action,label,title])=>{
+      const b=button(label,actions);b.dataset.chartAction=action;b.setAttribute('aria-label',title);b.title=title;
+      b.addEventListener('click',()=>zoom(action==='zoom-in'?.65:1/.65,.5));
+    });
+    const from=html('input'),to=html('input');
+    [[from,'С','chartFrom'],[to,'По','chartTo']].forEach(([input,label,key])=>{
+      input.type='date';input.min=iso(fullStart);input.max=iso(fullEnd);input.dataset[key]='';
+      input.setAttribute('aria-label',label==='С'?'Начало периода':'Конец периода');
+      const l=html('label','',label+' ');l.append(input);dateControls.append(l);
+      input.addEventListener('input',()=>input.setCustomValidity(''));
+    });
+    const apply=button('Показать',dateControls);apply.dataset.chartAction='apply';
+    function applyDates(){
+      from.setCustomValidity('');to.setCustomValidity('');
+      if(!from.value||!to.value){(!from.value?from:to).setCustomValidity('Укажите дату');(!from.value?from:to).reportValidity();return;}
+      if(from.value>=to.value){to.setCustomValidity('Конец периода должен быть позже начала');to.reportValidity();return;}
+      if(!from.reportValidity()||!to.reportValidity())return;
+      setRange(parseDay(from.value),parseDay(to.value));
+    }
+    apply.addEventListener('click',applyDates);
+    [from,to].forEach(input=>input.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();applyDates();}event.stopPropagation();}));
+    controls.append(presets,actions,dateControls);
+    const range=html('output');range.dataset.chartRange='';range.setAttribute('aria-live','polite');
+    const hint=html('p','chart-hint','Колесо — масштаб · перетаскивание — сдвиг · два пальца — масштаб. Клавиши: ← →, + −, Home. Приближение не добавляет отсутствующие наблюдения цены.');
+    const plot=svg('svg',{'class':'chart-viewport',tabindex:0,role:'img','aria-label':'Цена и DCF во времени. Масштаб: плюс и минус, сдвиг: стрелки, вся история: Home.'});
+    plot.style.touchAction='none';plot.style.width='100%';plot.style.display='block';
+    const tooltip=html('div','chart-tooltip');tooltip.hidden=true;
+    const readout=html('div','chart-readout');
+    shell.append(controls,range,plot,tooltip,readout,hint);wrapper.append(shell);
+    function setRange(a,b){
+      if(!Number.isFinite(a)||!Number.isFinite(b))return;
+      const span=Math.min(fullEnd-fullStart,Math.max(minSpan,b-a));
+      start=Math.max(fullStart,Math.min(a,fullEnd-span));end=start+span;
+      presets.querySelectorAll('button').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.chartPreset==='all'&&start===fullStart&&end===fullEnd)));
+      render();
+    }
+    function zoom(factor,position){
+      const span=Math.min(fullEnd-fullStart,Math.max(minSpan,(end-start)*factor));
+      const anchor=start+(end-start)*position;setRange(anchor-span*position,anchor+span*(1-position));
+    }
+    // Only parts intersecting the visible interval contribute to the y axis.
+    function visibleValues(run,linear){
+      const values=[];
+      if(run.endExclusive&&(run.at(-1).t<=start||run.at(-1).t===run[0].t))return values;
+      run.forEach(p=>{if(p.t>=start&&p.t<=end)values.push(...p.values);});
+      for(let i=1;i<run.length;i++){
+        const a=run[i-1],b=run[i],left=Math.max(start,a.t),right=Math.min(end,b.t);
+        if(left>=right)continue;
+        if(linear){[left,right].forEach(t=>values.push(a.values[0]+(b.values[0]-a.values[0])*(t-a.t)/(b.t-a.t)));}
+        else values.push(...a.values);
+      }
+      return values;
+    }
+    function valueAt(run,t,price){
+      if(t<run[0].t||t>run[run.length-1].t||(run.endExclusive&&t===run.at(-1).t))return null;
+      if(price){
+        const visible=run.filter(p=>p.t>=start&&p.t<=end);
+        if(!visible.length)return null;
+        return visible.reduce((best,p)=>Math.abs(p.t-t)<Math.abs(best.t-t)?p:best);
+      }
+      let i=0;while(i+1<run.length&&run[i+1].t<=t)i++;
+      return run[i];
+    }
+    function readAt(t){
+      return selected().map(key=>{
+        const p=seriesRuns[key].map(run=>valueAt(run,t,key==='price')).find(Boolean);
+        return titles[key]+': '+(p?money(p.values[0])+' · '+observationLabel(key,p,t):'нет данных на этой дате');
+      }).join('   |   ');
+    }
+    function observationLabel(key,p,t=p.t){
+      const source=p.refusalBoundary?p.observation:p;
+      if(!source)return 'граница отказа '+p.day;
+      const originalEnd=observationEnds[key];
+      const held=source!==p||(originalEnd!==undefined&&(source.t>originalEnd||t>originalEnd));
+      const day=originalEnd!==undefined&&source.t>originalEnd?iso(originalEnd):source.day;
+      return 'наблюдение '+day+(held?' (перенос последней оценки)':'');
+    }
+    function summary(){
+      return selected().map(key=>{
+        const last=series[key].filter(p=>p.valid&&p.t>=start&&p.t<=end).at(-1);
+        if(last){
+          if(last.refusalBoundary&&!last.observation)return titles[key]+': граница отказа '+last.day;
+          const throughEnd=key!=='price'&&seriesRuns[key].some(run=>valueAt(run,end,false));
+          return titles[key]+': '+money(last.values[0])+' · последнее '+observationLabel(key,last,throughEnd?end:last.t);
+        }
+        const atStart=key==='price'?null:seriesRuns[key].map(run=>valueAt(run,start,false)).find(Boolean);
+        return titles[key]+': '+(atStart?money(atStart.values[0])+' · '+observationLabel(key,atStart,start)+' (до начала периода)':'нет наблюдений в периоде');
+      }).join('   |   ');
+    }
+    function render(){
+      width=Math.max(280,Math.round(shell.getBoundingClientRect().width||wrapper.getBoundingClientRect().width||800));
+      const left=64,right=24,top=22,bottom=42,pw=width-left-right,ph=height-top-bottom;
+      const active=selected(),values=[];
+      active.forEach(key=>{
+        seriesRuns[key].forEach(run=>values.push(...visibleValues(run,key==='price')));
+        (bandRuns[key]||[]).forEach(run=>values.push(...visibleValues(run,false)));
+      });
+      const empty=!values.length;
+      let low=empty?0:Math.min(...values),high=empty?1:Math.max(...values);
+      const pad=high===low?Math.max(1,Math.abs(high)*.05):(high-low)*.09;
+      low=low>=0?Math.max(0,low-pad):low-pad;high+=pad;
+      if(high<=low){low=high-1;}
+      const X=t=>left+(t-start)/(end-start)*pw,Y=v=>top+(high-v)/(high-low)*ph;
+      geometry={left,right,top,bottom,pw,ph,X,Y};
+      wrapper.dataset.rangeStart=iso(start);wrapper.dataset.rangeEnd=iso(end);wrapper.dataset.yMin=String(low);wrapper.dataset.yMax=String(high);
+      from.value=iso(start);to.value=iso(end);range.textContent=iso(start)+' — '+iso(end);
+      plot.setAttribute('viewBox',`0 0 ${width} ${height}`);plot.replaceChildren();
+      const defs=svg('defs'),clipId='price-clip-'+chartIndex,patternId='price-hatch-'+chartIndex;
+      const clip=svg('clipPath',{id:clipId});clip.append(svg('rect',{x:left,y:top,width:pw,height:ph}));defs.append(clip);
+      const pattern=svg('pattern',{id:patternId,width:6,height:6,patternUnits:'userSpaceOnUse'});
+      pattern.append(svg('path',{d:'M-1,1 L1,-1 M0,6 L6,0 M5,7 L7,5',stroke:colors.measured,'stroke-width':.8,opacity:.5}));defs.append(pattern);plot.append(defs);
+      for(let i=0;i<=5;i++){
+        const value=low+(high-low)*i/5,y=Y(value);
+        plot.append(svg('line',{x1:left,y1:y,x2:width-right,y2:y,stroke:'#d7dfda','stroke-width':1}));
+        const label=new Intl.NumberFormat('ru-RU',{notation:Math.abs(value)>=10000?'compact':'standard',maximumFractionDigits:Math.abs(high-low)<5?2:0}).format(value);
+        plot.append(svg('text',{x:left-9,y:y+4,'text-anchor':'end','font-size':11,fill:'#52655a'},label));
+      }
+      const count=Math.max(2,Math.min(6,Math.floor(pw/105))),span=end-start;
+      for(let i=0;i<=count;i++){
+        const t=start+span*i/count;
+        const label=new Intl.DateTimeFormat('ru-RU',{timeZone:'UTC',...(span<2*365*DAY?{day:'2-digit',month:'2-digit',year:'2-digit'}:{month:'short',year:'numeric'})}).format(t);
+        plot.append(svg('text',{x:X(t),y:height-15,'text-anchor':i===0?'start':i===count?'end':'middle','font-size':11,fill:'#52655a'},label));
+      }
+      const clipped=svg('g',{'clip-path':`url(#${clipId})`});plot.append(clipped);
+      active.filter(key=>key!=='price').forEach(key=>{
+        const group=svg('g',{'data-series':key,'data-kind':'band'});
+        bandRuns[key].forEach((run,index)=>{
+          if(run.at(-1).t<start||run[0].t>end)return;
+          const forward=run.map((p,i)=>(i?'H':'M')+X(p.t)+(i?'V':',')+Y(p.values[1])).join(' ');
+          let backward=`L${X(run.at(-1).t)},${Y(run.at(-1).values[0])}`;
+          for(let i=run.length-2;i>=0;i--)backward+=` V${Y(run[i].values[0])} H${X(run[i].t)}`;
+          group.append(svg('path',{d:forward+' '+backward+' Z',fill:key==='industry'?'#c3d8ca':`url(#${patternId})`,'fill-opacity':key==='industry'?.45:1,stroke:colors[key],'stroke-opacity':.25,'stroke-width':.8,'data-segment':index}));
+        });clipped.append(group);
+      });
+      // Financial models are steps; the sampled price is linear. Nulls create separate paths.
+      [...active.filter(key=>key!=='price'),'price'].forEach(key=>{
+        const group=svg('g',{'data-series':key,'data-kind':'line'});
+        seriesRuns[key].forEach((run,index)=>{
+          if(run.at(-1).t<start||run[0].t>end)return;
+          if(run.length===1){group.append(svg('circle',{cx:X(run[0].t),cy:Y(run[0].values[0]),r:2.5,fill:colors[key],'data-segment':index}));return;}
+          const d=run.map((p,i)=>i===0?`M${X(p.t)},${Y(p.values[0])}`:key==='price'?`L${X(p.t)},${Y(p.values[0])}`:`H${X(p.t)} V${Y(p.values[0])}`).join(' ');
+          group.append(svg('path',{d,fill:'none',stroke:colors[key],'stroke-width':key==='price'?2:1.6,'stroke-dasharray':key==='measured'?'5 4':'none','vector-effect':'non-scaling-stroke','data-segment':index}));
+        });clipped.append(group);
+      });
+      if(empty)plot.append(svg('text',{x:left+pw/2,y:top+ph/2,'text-anchor':'middle','font-size':14,fill:'#52655a'},'За выбранный период нет данных'));
+      const cross=svg('line',{'data-chart-crosshair':'',x1:0,x2:0,y1:top,y2:top+ph,stroke:'#698277','stroke-dasharray':'3 3',visibility:'hidden'});plot.append(cross);
+      readout.textContent=summary();tooltip.hidden=true;
+      plot.setAttribute('aria-label',`Цена и DCF, ${range.textContent}. Масштаб: плюс и минус; сдвиг: стрелки; вся история: Home.`);
+    }
+    function position(event){
+      const rect=plot.getBoundingClientRect();return {x:(event.clientX-rect.left)*width/rect.width,y:(event.clientY-rect.top)*height/rect.height};
+    }
+    const fraction=x=>Math.max(0,Math.min(1,(x-geometry.left)/geometry.pw));
+    function rebase(){
+      const pts=[...pointers.values()];
+      gesture=pts.length>1?{kind:'pinch',distance:Math.max(1,Math.hypot(pts[1].x-pts[0].x,pts[1].y-pts[0].y)),middle:(pts[0].x+pts[1].x)/2,a:start,b:end}:{kind:'pan',x:pts[0]?.x,a:start,b:end};
+    }
+    plot.addEventListener('wheel',event=>{
+      const p=position(event);if(p.x<geometry.left||p.x>width-geometry.right||p.y<geometry.top||p.y>height-geometry.bottom)return;
+      event.preventDefault();zoom(Math.exp(Math.max(-1,Math.min(1,event.deltaY*(event.deltaMode===1?.03:.002)))),fraction(p.x));
+    },{passive:false});
+    plot.addEventListener('pointerdown',event=>{
+      if(event.button!==0)return;
+      const p=position(event);if(p.x<geometry.left||p.x>width-geometry.right||p.y<geometry.top||p.y>height-geometry.bottom)return;
+      pointers.set(event.pointerId,p);plot.setPointerCapture(event.pointerId);plot.focus({preventScroll:true});rebase();
+    });
+    plot.addEventListener('pointermove',event=>{
+      const p=position(event);
+      if(pointers.has(event.pointerId)){
+        pointers.set(event.pointerId,p);const pts=[...pointers.values()];
+        if(pts.length>1&&gesture.kind==='pinch'){
+          const distance=Math.max(1,Math.hypot(pts[1].x-pts[0].x,pts[1].y-pts[0].y)),middle=(pts[0].x+pts[1].x)/2;
+          const span=Math.max(minSpan,Math.min(fullEnd-fullStart,(gesture.b-gesture.a)*gesture.distance/distance));
+          const anchor=gesture.a+(gesture.b-gesture.a)*fraction(gesture.middle),a=anchor-span*fraction(middle);setRange(a,a+span);
+        }else if(gesture.kind==='pan'){
+          const delta=(gesture.x-p.x)/geometry.pw*(gesture.b-gesture.a);setRange(gesture.a+delta,gesture.b+delta);
+        }
+        return;
+      }
+      if(p.x<geometry.left||p.x>width-geometry.right||p.y<geometry.top||p.y>height-geometry.bottom){tooltip.hidden=true;plot.querySelector('[data-chart-crosshair]')?.setAttribute('visibility','hidden');return;}
+      const t=start+(end-start)*fraction(p.x),cross=plot.querySelector('[data-chart-crosshair]');
+      cross.setAttribute('x1',p.x);cross.setAttribute('x2',p.x);cross.setAttribute('visibility','visible');
+      tooltip.textContent=iso(t)+' — '+readAt(t);tooltip.hidden=false;
+    });
+    function release(event){
+      pointers.delete(event.pointerId);if(plot.hasPointerCapture(event.pointerId))plot.releasePointerCapture(event.pointerId);
+      if(pointers.size)rebase();else gesture=null;
+    }
+    plot.addEventListener('pointerup',release);plot.addEventListener('pointercancel',release);
+    plot.addEventListener('lostpointercapture',event=>{if(pointers.has(event.pointerId)){pointers.delete(event.pointerId);if(pointers.size)rebase();else gesture=null;}});
+    plot.addEventListener('pointerleave',()=>{if(!pointers.size){tooltip.hidden=true;plot.querySelector('[data-chart-crosshair]')?.setAttribute('visibility','hidden');}});
+    plot.addEventListener('keydown',event=>{
+      if(event.target!==plot||event.ctrlKey||event.metaKey||event.altKey)return;
+      const shift=(end-start)*.2;
+      if(event.key==='ArrowLeft')setRange(start-shift,end-shift);
+      else if(event.key==='ArrowRight')setRange(start+shift,end+shift);
+      else if(event.key==='+'||event.key==='=')zoom(.65,.5);
+      else if(event.key==='-'||event.key==='−')zoom(1/.65,.5);
+      else if(event.key==='Home')setRange(fullStart,fullEnd);
+      else return;
+      event.preventDefault();event.stopPropagation();
+    });
+    document.addEventListener('datum:model-change',render);
+    render();wrapper.classList.add('is-interactive');
+    if(typeof ResizeObserver==='function')new ResizeObserver(()=>{
+      const next=Math.max(280,Math.round(shell.getBoundingClientRect().width));if(Math.abs(next-width)>1)render();
+    }).observe(shell);
+  } catch(error) {
+    shell?.remove();wrapper.classList.remove('is-interactive');
+    console.warn('Interactive price chart unavailable; static chart retained.',error);
+  }
+});
+</script></body></html>
